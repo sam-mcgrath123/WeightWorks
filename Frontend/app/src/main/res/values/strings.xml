@@ -6,4 +6,5 @@
     <string name="nav_profile">Profile</string>
     <string name="nav_new_workout">New Workout</string>
     <string name="nav_history">History</string>
+    <string name="title_new_workout">New Workout</string>
 </resources>
