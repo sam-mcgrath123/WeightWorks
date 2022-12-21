@@ -3,4 +3,7 @@
     <string name="start_workout_button">Start Empty Workout</string>
     <string name="workout_button">Workout</string>
     <string name="exercise_button">Exercise</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_new_workout">New Workout</string>
+    <string name="nav_history">History</string>
 </resources>
