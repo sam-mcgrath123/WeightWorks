@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView title = findViewById(R.id.textView);
-        title.setText("New Workout");
+        title.setText(R.string.title_new_workout);
         workoutSection = findViewById(R.id.workout_section);
         workoutSection.setOnClickListener(workoutSectionListener);
         exerciseSection = findViewById(R.id.exercise_section);
@@ -39,14 +39,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            Fragment workoutSect = getSupportFragmentManager().findFragmentByTag("workout_section");
-            Fragment exerciseSect = getSupportFragmentManager().findFragmentByTag("exercise_section");
-            if (workoutSect != null)
-                fragmentTransaction.show(workoutSect);
+            if (workoutFragment.isAdded())
+                fragmentTransaction.show(workoutFragment);
             else
-                fragmentTransaction.add(R.id.fragment_container_view, new WorkoutSectionFragment(), "workout_section");
-            if (exerciseSect != null)
-                fragmentTransaction.hide(exerciseSect);
+                fragmentTransaction.add(R.id.fragment_container_view, workoutFragment, "workout_section");
+            if (exerciseFragment.isAdded())
+                fragmentTransaction.hide(exerciseFragment);
             fragmentTransaction.commit();
         }
     };
@@ -56,14 +54,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            Fragment workoutSect = getSupportFragmentManager().findFragmentByTag("workout_section");
-            Fragment exerciseSect = getSupportFragmentManager().findFragmentByTag("exercise_section");
-            if (exerciseSect != null)
-                fragmentTransaction.show(exerciseSect);
+            if (exerciseFragment.isAdded())
+                fragmentTransaction.show(exerciseFragment);
             else
-                fragmentTransaction.add(R.id.fragment_container_view, new ExerciseSectionFragment(), "exercise_section");
-            if (workoutSect != null)
-                fragmentTransaction.hide(workoutSect);
+                fragmentTransaction.add(R.id.fragment_container_view, exerciseFragment, "exercise_section");
+            if (workoutFragment.isAdded())
+                fragmentTransaction.hide(workoutFragment);
             fragmentTransaction.commit();
         }
     };
