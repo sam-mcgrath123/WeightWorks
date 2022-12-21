@@ -39,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            if (workoutFragment.isAdded())
-                fragmentTransaction.show(workoutFragment);
+            Fragment workoutSect = getSupportFragmentManager().findFragmentByTag("workout_section");
+            Fragment exerciseSect = getSupportFragmentManager().findFragmentByTag("exercise_section");
+            if (workoutSect != null)
+                fragmentTransaction.show(workoutSect);
             else
                 fragmentTransaction.add(R.id.fragment_container_view, new WorkoutSectionFragment(), "workout_section");
-            if (getSupportFragmentManager().findFragmentById(exerciseFragment.getId()) != null)
-                fragmentTransaction.hide(exerciseFragment);
+            if (exerciseSect != null)
+                fragmentTransaction.hide(exerciseSect);
             fragmentTransaction.commit();
         }
     };
@@ -54,12 +56,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            if (exerciseFragment.isAdded())
-                fragmentTransaction.show(exerciseFragment);
+            Fragment workoutSect = getSupportFragmentManager().findFragmentByTag("workout_section");
+            Fragment exerciseSect = getSupportFragmentManager().findFragmentByTag("exercise_section");
+            if (exerciseSect != null)
+                fragmentTransaction.show(exerciseSect);
             else
                 fragmentTransaction.add(R.id.fragment_container_view, new ExerciseSectionFragment(), "exercise_section");
-            if (workoutFragment.isAdded())
-                fragmentTransaction.hide(workoutFragment);
+            if (workoutSect != null)
+                fragmentTransaction.hide(workoutSect);
             fragmentTransaction.commit();
         }
     };
