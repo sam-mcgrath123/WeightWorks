@@ -5,11 +5,11 @@
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile" />
     <item
-        android:id="@+id/workout"
-        android:icon="@drawable/ic_baseline_dumbell_24"
-        android:title="History" />
-    <item
         android:id="@+id/history"
         android:icon="@drawable/ic_baseline_calendar_today_24"
         android:title="New Workout" />
+    <item
+        android:id="@+id/workout"
+        android:icon="@drawable/ic_baseline_dumbell_24"
+        android:title="History" />
 </menu>
