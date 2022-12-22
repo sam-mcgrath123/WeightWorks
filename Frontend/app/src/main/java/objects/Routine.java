@@ -1,17 +1,22 @@
 package objects;
 
+import java.util.ArrayList;
+
 public class Routine {
 
     private String name;
 
     private String date;
 
+    private ArrayList<String> exercises;
+
     public Routine() {
     }
 
-    public Routine(String name, String date) {
+    public Routine(String name, String date, ArrayList<String> exercises) {
         this.name = name;
         this.date = date;
+        this.exercises = exercises;
     }
 
     public String getName() {
@@ -28,5 +33,13 @@ public class Routine {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public ArrayList<String> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(ArrayList<String> exercises) {
+        this.exercises = exercises;
     }
 }

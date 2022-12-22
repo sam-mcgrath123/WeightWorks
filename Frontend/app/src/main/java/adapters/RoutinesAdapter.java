@@ -19,12 +19,14 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView routineName;
         public TextClock routineDate;
+        public TextView routineExercises;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             routineName = (TextView) itemView.findViewById(R.id.routine_name);
             routineDate = (TextClock) itemView.findViewById(R.id.routine_date);
+            routineExercises = (TextView) itemView.findViewById(R.id.routine_exercises);
         }
     }
 
@@ -53,6 +55,8 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
         nameTextView.setText(routine.getName());
         TextClock dateTextClock = holder.routineDate;
         dateTextClock.setText(routine.getDate());
+        TextView exercisesTextView = holder.routineExercises;
+        exercisesTextView.setText(routine.getExercises().toString().replace("[", "").replace("]", ""));
     }
 
     @Override
