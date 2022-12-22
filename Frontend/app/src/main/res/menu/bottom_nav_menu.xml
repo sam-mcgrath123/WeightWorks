@@ -6,10 +6,10 @@
         android:title="@string/nav_profile" />
     <item
         android:id="@+id/history"
-        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:icon="@drawable/ic_baseline_dumbell_24"
         android:title="@string/nav_new_workout" />
     <item
         android:id="@+id/workout"
-        android:icon="@drawable/ic_baseline_dumbell_24"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
         android:title="@string/nav_history" />
 </menu>
