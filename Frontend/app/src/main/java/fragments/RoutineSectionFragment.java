@@ -2,17 +2,12 @@ package fragments;
 
 import android.example.weightworks.R;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -21,14 +16,14 @@ import java.util.ArrayList;
 import adapters.RoutinesAdapter;
 import objects.Routine;
 
-public class WorkoutSectionFragment extends Fragment {
+public class RoutineSectionFragment extends Fragment {
 
     ArrayList<Routine> routines;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
-        return inflater.inflate(R.layout.fragment_workout_layout, parent, false);
+        return inflater.inflate(R.layout.fragment_routine_layout, parent, false);
     }
 
     @Override

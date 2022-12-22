@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import objects.Routine;
@@ -41,7 +39,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View routineView = inflater.inflate(R.layout.item_workout, parent, false);
+        View routineView = inflater.inflate(R.layout.item_routine, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(routineView);
         return viewHolder;

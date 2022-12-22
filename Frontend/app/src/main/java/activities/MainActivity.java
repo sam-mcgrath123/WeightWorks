@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import fragments.ExerciseSectionFragment;
-import fragments.WorkoutSectionFragment;
+import fragments.RoutineSectionFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         workoutSection.setOnClickListener(workoutSectionListener);
         exerciseSection = findViewById(R.id.exercise_section);
         exerciseSection.setOnClickListener(exerciseSectionListener);
-        workoutFragment = new WorkoutSectionFragment();
+        workoutFragment = new RoutineSectionFragment();
         exerciseFragment = new ExerciseSectionFragment();
     }
 
