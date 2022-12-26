@@ -6,18 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavHostController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class MainFragment extends Fragment {
 
-    Button workoutSection;
+    Button routineSection;
     Button exerciseSection;
-    Fragment workoutFragment;
+    Fragment routineFragment;
     Fragment exerciseFragment;
+//    NavHostController navHostController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -26,26 +28,30 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-
-        workoutSection = view.findViewById(R.id.workout_section);
-        workoutSection.setOnClickListener(workoutSectionListener);
+//        NavHostFragment navHostFragment =
+//                (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.fragment_container_view);
+//        navHostController = (NavHostController) navHostFragment.getNavController();
+//        navHostController.navigate(R.id.action_workout_routine);
+        routineSection = view.findViewById(R.id.routine_section);
+        routineSection.setOnClickListener(routineSectionListener);
         exerciseSection = view.findViewById(R.id.exercise_section);
         exerciseSection.setOnClickListener(exerciseSectionListener);
-        workoutFragment = new RoutineSectionFragment();
+        routineFragment = new RoutineSectionFragment();
         exerciseFragment = new ExerciseSectionFragment();
     }
 
-    private View.OnClickListener workoutSectionListener = new View.OnClickListener() {
+    private View.OnClickListener routineSectionListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-            if (workoutFragment.isAdded())
-                fragmentTransaction.show(workoutFragment);
-            else
-                fragmentTransaction.add(R.id.fragment_container_view, workoutFragment, "workout_section");
-            if (exerciseFragment.isAdded())
-                fragmentTransaction.hide(exerciseFragment);
-            fragmentTransaction.commit();
+//            Navigation.findNavController(v).navigate(R.id.action_exercise_routine);
+//            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+//            if (routineFragment.isAdded())
+//                fragmentTransaction.show(routineFragment);
+//            else
+//                fragmentTransaction.add(R.id.fragment_container_view, routineFragment, "workout_section");
+//            if (exerciseFragment.isAdded())
+//                fragmentTransaction.hide(exerciseFragment);
+//            fragmentTransaction.commit();
         }
     };
 
@@ -53,14 +59,16 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-            if (exerciseFragment.isAdded())
-                fragmentTransaction.show(exerciseFragment);
-            else
-                fragmentTransaction.add(R.id.fragment_container_view, exerciseFragment, "exercise_section");
-            if (workoutFragment.isAdded())
-                fragmentTransaction.hide(workoutFragment);
-            fragmentTransaction.commit();
+
+//            Navigation.findNavController(v).navigate(R.id.action_routine_exercise);
+//            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+//            if (exerciseFragment.isAdded())
+//                fragmentTransaction.show(exerciseFragment);
+//            else
+//                fragmentTransaction.add(R.id.fragment_container_view, exerciseFragment, "exercise_section");
+//            if (routineFragment.isAdded())
+//                fragmentTransaction.hide(routineFragment);
+//            fragmentTransaction.commit();
         }
     };
 }
