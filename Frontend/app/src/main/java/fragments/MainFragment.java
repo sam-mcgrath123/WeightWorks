@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,9 +13,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainFragment extends Fragment {
 
-    Button workoutSection;
+    Button routineSection;
     Button exerciseSection;
-    Fragment workoutFragment;
+    Fragment routineFragment;
     Fragment exerciseFragment;
 
     @Override
@@ -26,40 +25,49 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-
-        workoutSection = view.findViewById(R.id.workout_section);
-        workoutSection.setOnClickListener(workoutSectionListener);
+        routineSection = view.findViewById(R.id.routine_section);
+        routineSection.setOnClickListener(routineSectionListener);
         exerciseSection = view.findViewById(R.id.exercise_section);
         exerciseSection.setOnClickListener(exerciseSectionListener);
-        workoutFragment = new RoutineSectionFragment();
-        exerciseFragment = new ExerciseSectionFragment();
+        if(routineFragment == null) {
+            routineFragment = new RoutineSectionFragment();
+        }
+        if(exerciseFragment == null) {
+            exerciseFragment = new ExerciseSectionFragment();
+        }
+        routineSectionListener.onClick(view);
+        routineSection.setBackgroundColor(getResources().getColor(R.color.purple_200));
     }
 
-    private View.OnClickListener workoutSectionListener = new View.OnClickListener() {
+    final private View.OnClickListener routineSectionListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            routineSection.setBackgroundColor(getResources().getColor(R.color.purple_200));
+            exerciseSection.setBackgroundColor(getResources().getColor(R.color.purple_500));
             FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-            if (workoutFragment.isAdded())
-                fragmentTransaction.show(workoutFragment);
+            if (routineFragment.isAdded())
+                fragmentTransaction.show(routineFragment);
             else
-                fragmentTransaction.add(R.id.fragment_container_view, workoutFragment, "workout_section");
+                fragmentTransaction.add(R.id.fragment_container_view, routineFragment, "workout_section");
             if (exerciseFragment.isAdded())
                 fragmentTransaction.hide(exerciseFragment);
             fragmentTransaction.commit();
         }
     };
 
-    private View.OnClickListener exerciseSectionListener = new View.OnClickListener() {
+    final private View.OnClickListener exerciseSectionListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
+            routineSection.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            exerciseSection.setBackgroundColor(getResources().getColor(R.color.purple_200));
             FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
             if (exerciseFragment.isAdded())
                 fragmentTransaction.show(exerciseFragment);
             else
                 fragmentTransaction.add(R.id.fragment_container_view, exerciseFragment, "exercise_section");
-            if (workoutFragment.isAdded())
-                fragmentTransaction.hide(workoutFragment);
+            if (routineFragment.isAdded())
+                fragmentTransaction.hide(routineFragment);
             fragmentTransaction.commit();
         }
     };

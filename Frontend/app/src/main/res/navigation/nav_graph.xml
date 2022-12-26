@@ -9,30 +9,8 @@
         android:name="fragments.MainFragment"
         android:label="MainFragment" >
         <action
-            android:id="@+id/action_mainFragment3_to_exerciseSectionFragment2"
-            app:destination="@id/exerciseSectionFragment2" />
-        <action
-            android:id="@+id/action_mainFragment3_to_routineSectionFragment2"
-            app:destination="@id/routineSectionFragment2" />
-        <action
-            android:id="@+id/action_mainFragment3_to_userFragment"
+            android:id="@+id/action_workout_profile"
             app:destination="@id/profile" />
-    </fragment>
-    <fragment
-        android:id="@+id/exerciseSectionFragment2"
-        android:name="fragments.ExerciseSectionFragment"
-        android:label="ExerciseSectionFragment" >
-        <action
-            android:id="@+id/action_exerciseSectionFragment2_to_routineSectionFragment2"
-            app:destination="@id/routineSectionFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/routineSectionFragment2"
-        android:name="fragments.RoutineSectionFragment"
-        android:label="RoutineSectionFragment" >
-        <action
-            android:id="@+id/action_routineSectionFragment2_to_exerciseSectionFragment2"
-            app:destination="@id/exerciseSectionFragment2" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -40,7 +18,7 @@
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" >
         <action
-            android:id="@+id/action_userFragment_to_mainFragment3"
+            android:id="@+id/action_profile_workout"
             app:destination="@id/workout" />
     </fragment>
 </navigation>
