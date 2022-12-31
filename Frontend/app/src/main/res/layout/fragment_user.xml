@@ -5,7 +5,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/user_profile_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -17,42 +17,42 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/user_settings_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:src="@drawable/ic_baseline_settings_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/user_profile_image" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/user_username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="-10dp"
         android:text="Username"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/user_profile_image"
+        app:layout_constraintTop_toTopOf="@+id/user_profile_image" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/user_num_workouts_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="# of Workouts"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/user_username_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_username_text" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/user_tab_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="20dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/user_num_workouts_text" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/user_tab_layout"
@@ -61,16 +61,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
+        app:layout_constraintTop_toBottomOf="@+id/user_tab_divider">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/metric_tab"
+            android:id="@+id/user_metric_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Metrics" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/nutrition_tab"
+            android:id="@+id/user_nutrition_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nutrition" />
