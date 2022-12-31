@@ -28,16 +28,15 @@ public class MainFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        for (Fragment fragment : getChildFragmentManager().getFragments()) {
+            getChildFragmentManager().beginTransaction().remove(fragment).commit();
+        }
         routineSection = view.findViewById(R.id.routine_section);
         routineSection.setOnClickListener(routineSectionListener);
         exerciseSection = view.findViewById(R.id.exercise_section);
         exerciseSection.setOnClickListener(exerciseSectionListener);
-        if (routineFragment == null) {
-            routineFragment = new RoutineSectionFragment();
-        }
-        if (exerciseFragment == null) {
-            exerciseFragment = new ExerciseSectionFragment();
-        }
+        routineFragment = new RoutineSectionFragment();
+        exerciseFragment = new ExerciseSectionFragment();
         routineSectionListener.onClick(view);
         routineSection.setBackgroundColor(requireContext().getColor(R.color.purple_200));
     }
@@ -52,7 +51,7 @@ public class MainFragment extends Fragment {
             if (routineFragment.isAdded())
                 fragmentTransaction.show(routineFragment);
             else
-                fragmentTransaction.add(R.id.fragment_container_view, routineFragment, "workout_section");
+                fragmentTransaction.add(R.id.user_fragment_container, routineFragment, "workout_section");
             if (exerciseFragment.isAdded())
                 fragmentTransaction.hide(exerciseFragment);
             fragmentTransaction.commit();
@@ -70,7 +69,7 @@ public class MainFragment extends Fragment {
             if (exerciseFragment.isAdded())
                 fragmentTransaction.show(exerciseFragment);
             else
-                fragmentTransaction.add(R.id.fragment_container_view, exerciseFragment, "exercise_section");
+                fragmentTransaction.add(R.id.user_fragment_container, exerciseFragment, "exercise_section");
             if (routineFragment.isAdded())
                 fragmentTransaction.hide(routineFragment);
             fragmentTransaction.commit();

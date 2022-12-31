@@ -1,19 +1,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="fragments.UserFragment">
+    android:layout_height="match_parent">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="3"
-        android:scaleY="3"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
+        android:scaleX="3"
+        android:scaleY="3"
         android:src="@drawable/ic_baseline_account_circle_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/user_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,21 +64,24 @@
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/metric_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Metrics" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/nutrition_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nutrition" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container_view"
+        android:id="@+id/user_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="165dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/user_tab_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
