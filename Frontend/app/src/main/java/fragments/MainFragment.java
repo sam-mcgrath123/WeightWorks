@@ -51,7 +51,7 @@ public class MainFragment extends Fragment {
             if (routineFragment.isAdded())
                 fragmentTransaction.show(routineFragment);
             else
-                fragmentTransaction.add(R.id.user_fragment_container, routineFragment, "workout_section");
+                fragmentTransaction.add(R.id.main_fragment_container, routineFragment, "workout_section");
             if (exerciseFragment.isAdded())
                 fragmentTransaction.hide(exerciseFragment);
             fragmentTransaction.commit();
@@ -69,7 +69,7 @@ public class MainFragment extends Fragment {
             if (exerciseFragment.isAdded())
                 fragmentTransaction.show(exerciseFragment);
             else
-                fragmentTransaction.add(R.id.user_fragment_container, exerciseFragment, "exercise_section");
+                fragmentTransaction.add(R.id.main_fragment_container, exerciseFragment, "exercise_section");
             if (routineFragment.isAdded())
                 fragmentTransaction.hide(routineFragment);
             fragmentTransaction.commit();
