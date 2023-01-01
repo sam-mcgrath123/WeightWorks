@@ -40,4 +40,9 @@ public class Exercise {
     public void setSet(String set) {
         this.set = set;
     }
+
+    //TODO
+    public String getBestSet() {
+        return set;
+    }
 }
