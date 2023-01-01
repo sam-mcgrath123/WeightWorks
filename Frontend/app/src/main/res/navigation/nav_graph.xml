@@ -6,7 +6,7 @@
     app:startDestination="@id/workout">
     <fragment
         android:id="@+id/workout"
-        android:name="fragments.MainFragment"
+        android:name="fragments.NewWorkoutFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_workout_profile"
