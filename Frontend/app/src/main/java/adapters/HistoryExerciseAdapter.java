@@ -54,7 +54,7 @@ public class HistoryExerciseAdapter extends RecyclerView.Adapter<HistoryExercise
         TextView nameTextView = holder.exerciseName;
         nameTextView.setText(exercise.getName());
         TextView setTextView = holder.exerciseSet;
-        setTextView.setText(exercise.getSet());
+        setTextView.setText(exercise.getBestSet());
     }
 
     @Override
