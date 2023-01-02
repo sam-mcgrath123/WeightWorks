@@ -84,6 +84,7 @@ public class UserFragment extends Fragment {
 
 //            DialogFragment userSettingsFragment = new SettingsFragment();
 //            userSettingsFragment.show(getActivity(), "user_settings");
+
             Navigation.findNavController(v).navigate(R.id.action_profile_settings);
         }
     };
