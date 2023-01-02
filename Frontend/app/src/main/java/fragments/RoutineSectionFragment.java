@@ -52,5 +52,11 @@ public class RoutineSectionFragment extends Fragment {
         routines.add(routine1);
         routines.add(routine2);
         routines.add(routine3);
+        routines.add(routine1);
+        routines.add(routine2);
+        routines.add(routine3);
+        routines.add(routine1);
+        routines.add(routine2);
+        routines.add(routine3);
     }
 }
