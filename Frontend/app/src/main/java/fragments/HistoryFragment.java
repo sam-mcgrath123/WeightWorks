@@ -13,15 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import adapters.ExercisesAdapter;
 import adapters.HistoryAdapter;
-import objects.CompletedWorkout;
+import objects.Workout;
 import objects.Exercise;
 
 public class HistoryFragment extends Fragment {
 
     ArrayList<Exercise> exercises;
-    ArrayList<CompletedWorkout> completedWorkouts;
+    ArrayList<Workout> workouts;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,10 +31,10 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         initializeExercises();
-        initializeCompletedWorkouts();
+        initializeWorkouts();
         RecyclerView rvExercises = (RecyclerView) view.findViewById(R.id.history_rv);
 
-        HistoryAdapter historyAdapter = new HistoryAdapter(completedWorkouts);
+        HistoryAdapter historyAdapter = new HistoryAdapter(workouts);
         rvExercises.setAdapter(historyAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -50,17 +49,17 @@ public class HistoryFragment extends Fragment {
         exercises.add(exercise3);
     }
 
-    private void initializeCompletedWorkouts() {
-        completedWorkouts = new ArrayList<>();
-        CompletedWorkout completedWorkout1 = new CompletedWorkout("Push Workout", "1/10/2022", "60min", "1,000lbs", "0Prs", exercises);
+    private void initializeWorkouts() {
+        workouts = new ArrayList<>();
+        Workout workout1 = new Workout("Push Workout", "1/10/2022", "60min", "1,000lbs", "0Prs", exercises);
         initializeExercises();
-        CompletedWorkout completedWorkout2 = new CompletedWorkout("Pull Workout", "10/10/2022", "55min", "15,000lbs", "5Prs", exercises);
+        Workout workout2 = new Workout("Pull Workout", "10/10/2022", "55min", "15,000lbs", "5Prs", exercises);
         initializeExercises();
-        CompletedWorkout completedWorkout3 = new CompletedWorkout("Legs Workout", "12/10/2022", "120min", "20,000lbs", "10Prs", exercises);
-        completedWorkouts.add(completedWorkout1);
-        completedWorkouts.add(completedWorkout2);
-        completedWorkouts.add(completedWorkout3);
-        completedWorkout1 = completedWorkouts.get(0);
-        completedWorkout1.getExercises().add(new Exercise("Bench Press", "Chest", "225 (x10)"));
+        Workout workout3 = new Workout("Legs Workout", "12/10/2022", "120min", "20,000lbs", "10Prs", exercises);
+        workouts.add(workout1);
+        workouts.add(workout2);
+        workouts.add(workout3);
+        workout1 = workouts.get(0);
+        workout1.getExercises().add(new Exercise("Bench Press", "Chest", "225 (x10)"));
     }
 }

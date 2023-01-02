@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import objects.CompletedWorkout;
+import objects.Workout;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
@@ -39,10 +39,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         }
     }
 
-    private ArrayList<CompletedWorkout> completedWorkouts;
+    private ArrayList<Workout> workouts;
 
-    public HistoryAdapter(ArrayList<CompletedWorkout> completedWorkouts) {
-        this.completedWorkouts = completedWorkouts;
+    public HistoryAdapter(ArrayList<Workout> workouts) {
+        this.workouts = workouts;
     }
 
     @NonNull
@@ -59,24 +59,24 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull HistoryAdapter.ViewHolder holder, int position) {
-        CompletedWorkout completedWorkout = completedWorkouts.get(position);
+        Workout workout = workouts.get(position);
 
         TextView tempTextView = holder.name;
-        tempTextView.setText(completedWorkout.getName());
+        tempTextView.setText(workout.getName());
         tempTextView = holder.date;
-        tempTextView.setText(completedWorkout.getDate());
+        tempTextView.setText(workout.getDate());
         tempTextView = holder.duration;
-        tempTextView.setText(completedWorkout.getDuration());
+        tempTextView.setText(workout.getDuration());
         tempTextView = holder.totalWeight;
-        tempTextView.setText(completedWorkout.getTotalWeight());
+        tempTextView.setText(workout.getTotalWeight());
         tempTextView = holder.numOfPrs;
-        tempTextView.setText(completedWorkout.getNumOfPRs());
+        tempTextView.setText(workout.getNumOfPRs());
 
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(holder.exercises.getContext(), LinearLayoutManager.VERTICAL, false);
 
 
-        HistoryExerciseAdapter historyExerciseAdapter = new HistoryExerciseAdapter(completedWorkout.getExercises());
+        HistoryExerciseAdapter historyExerciseAdapter = new HistoryExerciseAdapter(workout.getExercises());
         holder.exercises.setLayoutManager(layoutManager);
         holder.exercises.setAdapter(historyExerciseAdapter);
         holder.exercises.setRecycledViewPool(viewPool);
@@ -84,6 +84,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return completedWorkouts.size();
+        return workouts.size();
     }
 }

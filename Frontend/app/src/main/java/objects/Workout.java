@@ -2,7 +2,7 @@ package objects;
 
 import java.util.ArrayList;
 
-public class CompletedWorkout {
+public class Workout {
 
     private String name;
 
@@ -16,10 +16,10 @@ public class CompletedWorkout {
 
     private ArrayList<Exercise> exercises;
 
-    public CompletedWorkout() {
+    public Workout() {
     }
 
-    public CompletedWorkout(String name, String date, String duration, String totalWeight, String numOfPRs, ArrayList<Exercise> exercises) {
+    public Workout(String name, String date, String duration, String totalWeight, String numOfPRs, ArrayList<Exercise> exercises) {
         this.name = name;
         this.date = date;
         this.duration = duration;
