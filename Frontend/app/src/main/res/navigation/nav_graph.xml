@@ -6,11 +6,15 @@
     app:startDestination="@id/workout">
     <fragment
         android:id="@+id/workout"
-        android:name="fragments.MainFragment"
-        android:label="MainFragment" >
+        android:name="fragments.WorkoutFragment"
+        android:label="fragment_workout"
+        tools:layout="@layout/fragment_workout">
         <action
             android:id="@+id/action_workout_profile"
             app:destination="@id/profile" />
+        <action
+            android:id="@+id/action_workout_history"
+            app:destination="@id/history" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -20,5 +24,20 @@
         <action
             android:id="@+id/action_profile_workout"
             app:destination="@id/workout" />
+        <action
+            android:id="@+id/action_profile_history"
+            app:destination="@id/history" />
+    </fragment>
+    <fragment
+        android:id="@+id/history"
+        android:name="fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_history_workout"
+            app:destination="@id/workout" />
+        <action
+            android:id="@+id/action_history_profile"
+            app:destination="@id/profile" />
     </fragment>
 </navigation>
