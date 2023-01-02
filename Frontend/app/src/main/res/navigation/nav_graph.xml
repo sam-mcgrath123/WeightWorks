@@ -27,6 +27,10 @@
         <action
             android:id="@+id/action_profile_history"
             app:destination="@id/history" />
+        <action
+            android:id="@+id/action_profile_settings"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/profile"/>
     </fragment>
     <fragment
         android:id="@+id/history"
@@ -40,4 +44,9 @@
             android:id="@+id/action_history_profile"
             app:destination="@id/profile" />
     </fragment>
+    <dialog
+        android:id="@+id/settingsFragment"
+        android:name="fragments.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings"/>
 </navigation>
