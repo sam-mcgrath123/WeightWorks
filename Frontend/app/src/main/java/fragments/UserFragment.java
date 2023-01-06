@@ -78,13 +78,6 @@ public class UserFragment extends Fragment {
     private View.OnClickListener userSettingsListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            ViewGroup root = (ViewGroup) getView();
-//            SettingsWindow settingsWindow = new SettingsWindow();
-//            settingsWindow.showPopupWindow(v, root);
-
-//            DialogFragment userSettingsFragment = new SettingsFragment();
-//            userSettingsFragment.show(getActivity(), "user_settings");
-
             Navigation.findNavController(v).navigate(R.id.action_profile_settings);
         }
     };
