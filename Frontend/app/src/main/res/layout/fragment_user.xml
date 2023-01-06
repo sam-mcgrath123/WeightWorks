@@ -8,10 +8,10 @@
         android:id="@+id/user_profile_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:scaleX="3"
-        android:scaleY="3"
+        android:layout_marginStart="@dimen/spacing_huge"
+        android:layout_marginTop="@dimen/spacing_huge"
+        android:scaleX="@integer/scale_large"
+        android:scaleY="@integer/scale_large"
         android:src="@drawable/ic_baseline_account_circle_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +20,7 @@
         android:id="@+id/user_settings_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="@dimen/spacing_small"
         android:src="@drawable/ic_baseline_settings_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/user_profile_image" />
@@ -29,10 +29,10 @@
         android:id="@+id/user_username_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="@dimen/spacing_huge"
         android:layout_marginTop="-10dp"
         android:text="Username"
-        android:textSize="20sp"
+        android:textSize="@dimen/font_large"
         app:layout_constraintStart_toEndOf="@+id/user_profile_image"
         app:layout_constraintTop_toTopOf="@+id/user_profile_image" />
 
@@ -47,8 +47,8 @@
     <View
         android:id="@+id/user_tab_divider"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="@dimen/divider_height_short"
+        android:layout_marginTop="@dimen/spacing_large"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_tab_divider">
 
@@ -79,8 +78,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/user_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="165dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_tab_layout" />

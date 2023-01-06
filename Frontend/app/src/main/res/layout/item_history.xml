@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="@dimen/spacing_small"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -15,10 +15,10 @@
             android:id="@+id/history_workout_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/spacing_small"
             android:text="Workout Name"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/font_normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
             android:id="@+id/history_workout_date_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/spacing_small"
             android:text="Workout Date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/history_workout_name_text" />
@@ -35,7 +35,7 @@
             android:id="@+id/history_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/spacing_small"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
             android:id="@+id/history_exercise_section_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/spacing_small"
             android:text="Exercise"
             app:layout_constraintStart_toStartOf="@+id/history_workout_date_text"
             app:layout_constraintTop_toBottomOf="@+id/history_linear_layout" />
@@ -79,7 +79,7 @@
             android:id="@+id/history_rv_exercises"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/spacing_tiny"
             app:layout_constraintStart_toStartOf="@+id/history_exercise_section_text"
             app:layout_constraintTop_toBottomOf="@+id/history_exercise_section_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
