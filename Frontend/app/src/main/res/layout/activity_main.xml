@@ -25,7 +25,7 @@
         app:layout_constraintTop_toBottomOf="@+id/screen_title"
         app:layout_constraintBottom_toBottomOf="@+id/main_linear_layout"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/main_nav_graph" />
 
     <LinearLayout
         android:id="@+id/main_linear_layout"

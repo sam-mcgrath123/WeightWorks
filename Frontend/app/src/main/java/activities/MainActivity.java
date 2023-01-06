@@ -44,11 +44,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case (R.id.workout): {
                     title.setText(R.string.nav_new_workout);
+                    if(navController.getCurrentDestination().getId() == R.id.newWorkoutFragment) {
+                        navController.navigate(R.id.workout_fragment_container);
+                    }
                     break;
                 }
                 case (R.id.history): {
                     title.setText(R.string.nav_history);
                     break;
+                }
+                case (R.id.newWorkoutFragment): {
+                    title.setText("Push Day");
                 }
             }
         }

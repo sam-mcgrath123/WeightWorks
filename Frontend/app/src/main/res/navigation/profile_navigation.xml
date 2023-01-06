@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/profile"
+    android:id="@+id/profile_navigation">
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="fragments.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_profile_workout"
+            app:destination="@+id/workout_navigation" />
+        <action
+            android:id="@+id/action_profile_history"
+            app:destination="@id/history" />
+        <action
+            android:id="@+id/action_profile_settings"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/profile" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/settingsFragment"
+        android:name="fragments.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profile_navigation"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/nav_profile" />
     <item
-        android:id="@+id/workout"
+        android:id="@+id/workout_navigation"
         android:icon="@drawable/ic_baseline_dumbell_24"
         android:title="@string/nav_new_workout" />
     <item
-        android:id="@+id/history"
+        android:id="@+id/history_navigation"
         android:icon="@drawable/ic_baseline_calendar_today_24"
         android:title="@string/nav_history" />
 </menu>

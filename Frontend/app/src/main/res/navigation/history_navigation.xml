@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/history"
+    android:id="@+id/history_navigation">
+
+    <fragment
+        android:id="@+id/history"
+        android:name="fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_history_workout"
+            app:destination="@id/workout" />
+        <action
+            android:id="@+id/action_history_profile"
+            app:destination="@id/profile" />
+    </fragment>
+</navigation>

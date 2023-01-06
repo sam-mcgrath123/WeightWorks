@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/start_empty_workout"
+        android:id="@+id/workout_new_workout_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_large"
@@ -22,7 +22,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_empty_workout">
+        app:layout_constraintTop_toBottomOf="@+id/workout_new_workout_button">
 
         <Button
             android:id="@+id/routine_section"
@@ -33,7 +33,7 @@
             android:text="@string/workout_button"
             app:layout_constraintEnd_toStartOf="@+id/exercise_section"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/start_empty_workout" />
+            app:layout_constraintTop_toBottomOf="@+id/workout_new_workout_button" />
 
         <Button
             android:id="@+id/exercise_section"
@@ -43,7 +43,7 @@
             android:layout_margin="@dimen/spacing_small"
             android:text="@string/exercise_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/start_empty_workout" />
+            app:layout_constraintTop_toBottomOf="@+id/workout_new_workout_button" />
     </LinearLayout>
 
     <View
