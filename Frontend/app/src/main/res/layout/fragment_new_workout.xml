@@ -1,12 +1,20 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="fragments.NewWorkoutFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="New Workout Fragment" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/newWorkout_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_large"
+        android:layout_margin="@dimen/spacing_small"
+        android:text="Push Day"/>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
