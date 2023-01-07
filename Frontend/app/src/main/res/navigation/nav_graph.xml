@@ -15,12 +15,17 @@
         <action
             android:id="@+id/action_workout_history"
             app:destination="@id/history" />
+        <action
+            android:id="@+id/action_workout_newWorkout"
+            app:destination="@id/newWorkoutFragment"
+            app:popUpTo="@+id/workout"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/profile"
         android:name="fragments.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
+        tools:layout="@layout/fragment_user">
         <action
             android:id="@+id/action_profile_workout"
             app:destination="@id/workout" />
@@ -30,13 +35,16 @@
         <action
             android:id="@+id/action_profile_settings"
             app:destination="@id/settingsFragment"
-            app:popUpTo="@id/profile"/>
+            app:popUpTo="@id/profile" />
+        <action
+            android:id="@+id/action_profile_to_newWorkoutFragment"
+            app:destination="@id/newWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/history"
         android:name="fragments.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" >
+        tools:layout="@layout/fragment_history">
         <action
             android:id="@+id/action_history_workout"
             app:destination="@id/workout" />
@@ -48,5 +56,11 @@
         android:id="@+id/settingsFragment"
         android:name="fragments.SettingsFragment"
         android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/newWorkoutFragment"
+        android:name="fragments.NewWorkoutFragment"
+        android:label="fragment_new_workout"
+        tools:layout="@layout/fragment_new_workout" />
 </navigation>
