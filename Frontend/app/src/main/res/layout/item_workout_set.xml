@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/workout_set_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="2"
+        android:text="1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/workout_exercise_previous_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="3"
+        android:text="75lb x 12" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/workout_exercise_weight_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="85" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/workout_exercise_reps_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="12" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/workout_exercise_checkmark_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:src="@drawable/ic_baseline_checkmark" />
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

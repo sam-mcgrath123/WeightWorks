@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.ArrayList;
+
 public class Exercise {
 
     private String name;
@@ -8,6 +10,8 @@ public class Exercise {
 
     private String set;
 
+    private ArrayList<Set> sets;
+
     public Exercise() {
     }
 
@@ -15,6 +19,12 @@ public class Exercise {
         this.name = name;
         this.type = type;
         this.set = set;
+    }
+
+    public Exercise(String name, String type, ArrayList<Set> sets) {
+        this.name = name;
+        this.type = type;
+        this.sets = sets;
     }
 
     public String getName() {
@@ -44,5 +54,13 @@ public class Exercise {
     //TODO
     public String getBestSet() {
         return set;
+    }
+
+    public ArrayList<Set> getSets() {
+        return sets;
+    }
+
+    public void setSets(ArrayList<Set> sets) {
+        this.sets = sets;
     }
 }
