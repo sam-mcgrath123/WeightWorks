@@ -5,9 +5,9 @@ import android.example.weightworks.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextClock;
 import android.widget.TextView;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -18,14 +18,18 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView routineName;
-        public TextClock routineDate;
         public TextView routineExercises;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(itemView).navigate(R.id.action_workout_newWorkout);
+                }
+            });
 
             routineName = (TextView) itemView.findViewById(R.id.routine_name);
-            routineDate = (TextClock) itemView.findViewById(R.id.routine_date);
             routineExercises = (TextView) itemView.findViewById(R.id.routine_exercises);
         }
     }
@@ -53,10 +57,8 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
 
         TextView nameTextView = holder.routineName;
         nameTextView.setText(routine.getName());
-        TextClock dateTextClock = holder.routineDate;
-        dateTextClock.setText(routine.getDate());
         TextView exercisesTextView = holder.routineExercises;
-        exercisesTextView.setText(routine.getExercises().toString().replace("[", "").replace("]", ""));
+        exercisesTextView.setText(routine.toString());
     }
 
     @Override
