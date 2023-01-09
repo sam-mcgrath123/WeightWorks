@@ -4,8 +4,6 @@
     <string name="workout_button">Routines</string>
     <string name="exercise_button">Exercises</string>
     <string name="nav_profile">Profile</string>
-    <string name="nav_new_workout">New Workout</string>
+    <string name="nav_new_workout">Workout</string>
     <string name="nav_history">History</string>
-    <string name="title_new_workout">New Workout</string>
-    <string name="title_activity_user">UserActivity</string>
 </resources>

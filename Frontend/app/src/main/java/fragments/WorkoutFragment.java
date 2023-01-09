@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class WorkoutFragment extends Fragment {
 
     Button blankWorkout;
@@ -35,14 +37,12 @@ public class WorkoutFragment extends Fragment {
         }
         blankWorkout = view.findViewById(R.id.start_empty_workout);
         blankWorkout.setOnClickListener(blankWorkoutListener);
-        routineSection = view.findViewById(R.id.routine_section);
-        routineSection.setOnClickListener(routineSectionListener);
-        exerciseSection = view.findViewById(R.id.exercise_section);
-        exerciseSection.setOnClickListener(exerciseSectionListener);
+        TabLayout tabLayout = view.findViewById(R.id.workout_tab_layout);
+        tabLayout.addOnTabSelectedListener(tabSelectedListener);
         routineFragment = new RoutineSectionFragment();
         exerciseFragment = new ExerciseSectionFragment();
-        routineSectionListener.onClick(view);
-        routineSection.setBackgroundColor(requireContext().getColor(R.color.purple_200));
+        TabLayout.Tab routineTab = tabLayout.getTabAt(0);
+        tabSelectedListener.onTabSelected(routineTab);
     }
 
     final private View.OnClickListener blankWorkoutListener = new View.OnClickListener() {
@@ -52,38 +52,36 @@ public class WorkoutFragment extends Fragment {
         }
     };
 
-    final private View.OnClickListener routineSectionListener = new View.OnClickListener() {
-        @RequiresApi(api = Build.VERSION_CODES.M)
+    private TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
-        public void onClick(View v) {
-            routineSection.setBackgroundColor(requireContext().getColor(R.color.purple_200));
-            exerciseSection.setBackgroundColor(requireContext().getColor(R.color.purple_500));
-            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-            if (routineFragment.isAdded())
-                fragmentTransaction.show(routineFragment);
-            else
-                fragmentTransaction.add(R.id.workout_fragment_container, routineFragment, "workout_section");
-            if (exerciseFragment.isAdded())
-                fragmentTransaction.hide(exerciseFragment);
-            fragmentTransaction.commit();
+        public void onTabSelected(TabLayout.Tab tab) {
+            switch (tab.getPosition()) {
+                case (0):
+                    displaySection(routineFragment, exerciseFragment);
+                    break;
+                case (1):
+                    displaySection(exerciseFragment, routineFragment);
+                    break;
+            }
+        }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
         }
     };
 
-    final private View.OnClickListener exerciseSectionListener = new View.OnClickListener() {
-
-        @RequiresApi(api = Build.VERSION_CODES.M)
-        @Override
-        public void onClick(View v) {
-            routineSection.setBackgroundColor(requireContext().getColor(R.color.purple_500));
-            exerciseSection.setBackgroundColor(requireContext().getColor(R.color.purple_200));
-            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-            if (exerciseFragment.isAdded())
-                fragmentTransaction.show(exerciseFragment);
-            else
-                fragmentTransaction.add(R.id.workout_fragment_container, exerciseFragment, "exercise_section");
-            if (routineFragment.isAdded())
-                fragmentTransaction.hide(routineFragment);
-            fragmentTransaction.commit();
-        }
-    };
+    private void displaySection(Fragment show, Fragment hide) {
+        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+        if (show.isAdded())
+            fragmentTransaction.show(show);
+        else
+            fragmentTransaction.add(R.id.workout_fragment_container, show, show.getTag());
+        if (hide.isAdded())
+            fragmentTransaction.hide(hide);
+        fragmentTransaction.commit();
+    }
 }
