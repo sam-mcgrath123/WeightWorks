@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -23,6 +25,12 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(itemView).navigate(R.id.action_workout_newWorkout);
+                }
+            });
 
             routineName = (TextView) itemView.findViewById(R.id.routine_name);
             routineExercises = (TextView) itemView.findViewById(R.id.routine_exercises);
