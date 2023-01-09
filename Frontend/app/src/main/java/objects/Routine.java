@@ -1,5 +1,7 @@
 package objects;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Routine {
@@ -41,5 +43,11 @@ public class Routine {
 
     public void setExercises(ArrayList<String> exercises) {
         this.exercises = exercises;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getExercises().toString().replace("[", "").replace("]", "");
     }
 }

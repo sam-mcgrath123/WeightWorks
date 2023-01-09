@@ -5,9 +5,7 @@ import android.example.weightworks.R;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +18,6 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView routineName;
-        public TextClock routineDate;
         public TextView routineExercises;
 
         public ViewHolder(View itemView) {
@@ -61,7 +58,7 @@ public class RoutinesAdapter extends RecyclerView.Adapter<RoutinesAdapter.ViewHo
         TextView nameTextView = holder.routineName;
         nameTextView.setText(routine.getName());
         TextView exercisesTextView = holder.routineExercises;
-        exercisesTextView.setText(routine.getExercises().toString().replace("[", "").replace("]", ""));
+        exercisesTextView.setText(routine.toString());
     }
 
     @Override
