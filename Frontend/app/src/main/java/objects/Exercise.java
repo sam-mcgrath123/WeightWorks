@@ -8,17 +8,9 @@ public class Exercise {
 
     private String type;
 
-    private String set;
-
     private ArrayList<Set> sets;
 
     public Exercise() {
-    }
-
-    public Exercise(String name, String type, String set) {
-        this.name = name;
-        this.type = type;
-        this.set = set;
     }
 
     public Exercise(String name, String type, ArrayList<Set> sets) {
@@ -43,17 +35,9 @@ public class Exercise {
         this.type = type;
     }
 
-    public String getSet() {
-        return set;
-    }
-
-    public void setSet(String set) {
-        this.set = set;
-    }
-
     //TODO
     public String getBestSet() {
-        return set;
+        return sets.get(0).getPrevious();
     }
 
     public ArrayList<Set> getSets() {

@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 public class WorkoutFragment extends Fragment {
@@ -49,8 +48,7 @@ public class WorkoutFragment extends Fragment {
     final private View.OnClickListener blankWorkoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            NavController navController = Navigation.findNavController(v);
-            navController.navigate(R.id.action_workout_newWorkout);
+            Navigation.findNavController(v).navigate(R.id.action_workout_newWorkout);
         }
     };
 

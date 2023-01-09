@@ -36,9 +36,6 @@
             android:id="@+id/action_profile_settings"
             app:destination="@id/settingsFragment"
             app:popUpTo="@id/profile" />
-        <action
-            android:id="@+id/action_profile_to_newWorkoutFragment"
-            app:destination="@id/newWorkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/history"

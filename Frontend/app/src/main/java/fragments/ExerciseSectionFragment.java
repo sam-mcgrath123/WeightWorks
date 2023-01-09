@@ -15,10 +15,12 @@ import java.util.ArrayList;
 
 import adapters.ExercisesAdapter;
 import objects.Exercise;
+import objects.Set;
 
 public class ExerciseSectionFragment extends Fragment {
 
     ArrayList<Exercise> exercises;
+    ArrayList<Set> sets;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -37,11 +39,24 @@ public class ExerciseSectionFragment extends Fragment {
 
     private void initializeExercises() {
         exercises = new ArrayList<>();
-        Exercise exercise1 = new Exercise("Bench Press", "Chest", "225 (x10)");
-        Exercise exercise2 = new Exercise("Deadlift", "Back", "405 (x8)");
-        Exercise exercise3 = new Exercise("Squat", "Legs", "315 (x12)");
+        initializeSets();
+        Exercise exercise1 = new Exercise("Bench Press", "Chest", sets);
+        initializeSets();
+        Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
+        initializeSets();
+        Exercise exercise3 = new Exercise("Squat", "Legs", sets);
         exercises.add(exercise1);
         exercises.add(exercise2);
         exercises.add(exercise3);
+    }
+
+    private void initializeSets() {
+        sets = new ArrayList<>();
+        Set set1 = new Set(1, "90 lb x 12");
+        Set set2 = new Set(2, "90 lb x 12");
+        Set set3 = new Set(3, "90 lb x 12");
+        sets.add(set1);
+        sets.add(set2);
+        sets.add(set3);
     }
 }
