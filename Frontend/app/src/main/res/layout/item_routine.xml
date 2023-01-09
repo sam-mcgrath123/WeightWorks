@@ -1,34 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/routine_size"
     android:layout_height="@dimen/routine_size"
     android:layout_marginStart="@dimen/spacing_large"
-    android:layout_marginTop="@dimen/spacing_large">
+    android:layout_marginTop="@dimen/spacing_large"
+    app:cardCornerRadius="@dimen/spacing_small"
+    app:cardElevation="@dimen/spacing_tiny">
 
-    <TextView
-        android:id="@+id/routine_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_tiny"
-        android:text="Routine 1"
-        android:textColor="@color/black"
-        android:textSize="@dimen/font_large" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/routine_exercises"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:layout_marginTop="@dimen/spacing_tiny"
-        android:layout_marginEnd="@dimen/spacing_tiny"
-        android:layout_marginStart="@dimen/spacing_small"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/routine_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxWidth="100dp"
+            android:maxLines="2"
+            android:text="Push Day"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_normal"
+            app:layout_constraintEnd_toStartOf="@+id/routine_options_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextClock
-        android:id="@+id/routine_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="10/10/22" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/routine_options_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_horizontal_dots"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/routine_exercises"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_normal"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/spacing_tiny"
+            android:maxWidth="125dp"
+            android:maxLines="2"
+            android:text="Bench Press, Deadlift, Squat, Seated Overhead Press, Bulgarian split Squats"
+            app:layout_constraintStart_toStartOf="@id/routine_name"
+            app:layout_constraintTop_toBottomOf="@+id/routine_name" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/routine_clock_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:src="@drawable/ic_baseline_clock_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/routine_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:text="25 days ago"
+            app:layout_constraintBottom_toBottomOf="@id/routine_clock_image"
+            app:layout_constraintStart_toEndOf="@id/routine_clock_image"
+            app:layout_constraintTop_toTopOf="@id/routine_clock_image" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
