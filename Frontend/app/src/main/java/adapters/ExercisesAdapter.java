@@ -55,7 +55,7 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
         TextView typeTextView = holder.exerciseType;
         typeTextView.setText(exercise.getType());
         TextView setTextView = holder.exerciseSet;
-        setTextView.setText(exercise.getSet());
+        setTextView.setText(exercise.getBestSet());
     }
 
     @Override

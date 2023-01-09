@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import adapters.HistoryAdapter;
+import objects.Set;
 import objects.Workout;
 import objects.Exercise;
 
 public class HistoryFragment extends Fragment {
 
+    ArrayList<Set> sets;
     ArrayList<Exercise> exercises;
     ArrayList<Workout> workouts;
 
@@ -39,11 +41,24 @@ public class HistoryFragment extends Fragment {
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    private void initializeSets() {
+        sets = new ArrayList<>();
+        Set set1 = new Set(1, "90 lb x 12");
+        Set set2 = new Set(2, "90 lb x 12");
+        Set set3 = new Set(3, "90 lb x 12");
+        sets.add(set1);
+        sets.add(set2);
+        sets.add(set3);
+    }
+
     private void initializeExercises() {
         exercises = new ArrayList<>();
-        Exercise exercise1 = new Exercise("Bench Press", "Chest", "225 (x10)");
-        Exercise exercise2 = new Exercise("Deadlift", "Back", "405 (x8)");
-        Exercise exercise3 = new Exercise("Squat", "Legs", "315 (x12)");
+        initializeSets();
+        Exercise exercise1 = new Exercise("Bench Press", "Chest", sets);
+        initializeSets();
+        Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
+        initializeSets();
+        Exercise exercise3 = new Exercise("Squat", "Legs", sets);
         exercises.add(exercise1);
         exercises.add(exercise2);
         exercises.add(exercise3);
@@ -59,7 +74,5 @@ public class HistoryFragment extends Fragment {
         workouts.add(workout1);
         workouts.add(workout2);
         workouts.add(workout3);
-        workout1 = workouts.get(0);
-        workout1.getExercises().add(new Exercise("Bench Press", "Chest", "225 (x10)"));
     }
 }

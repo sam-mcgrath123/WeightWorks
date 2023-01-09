@@ -12,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 public class WorkoutFragment extends Fragment {
 
+    Button blankWorkout;
     Button routineSection;
     Button exerciseSection;
     Fragment routineFragment;
@@ -31,6 +33,8 @@ public class WorkoutFragment extends Fragment {
         for (Fragment fragment : getChildFragmentManager().getFragments()) {
             getChildFragmentManager().beginTransaction().remove(fragment).commit();
         }
+        blankWorkout = view.findViewById(R.id.start_empty_workout);
+        blankWorkout.setOnClickListener(blankWorkoutListener);
         routineSection = view.findViewById(R.id.routine_section);
         routineSection.setOnClickListener(routineSectionListener);
         exerciseSection = view.findViewById(R.id.exercise_section);
@@ -40,6 +44,13 @@ public class WorkoutFragment extends Fragment {
         routineSectionListener.onClick(view);
         routineSection.setBackgroundColor(requireContext().getColor(R.color.purple_200));
     }
+
+    final private View.OnClickListener blankWorkoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Navigation.findNavController(v).navigate(R.id.action_workout_newWorkout);
+        }
+    };
 
     final private View.OnClickListener routineSectionListener = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.M)

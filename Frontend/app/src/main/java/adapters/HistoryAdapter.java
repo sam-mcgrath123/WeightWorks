@@ -75,7 +75,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(holder.exercises.getContext(), LinearLayoutManager.VERTICAL, false);
 
-
         HistoryExerciseAdapter historyExerciseAdapter = new HistoryExerciseAdapter(workout.getExercises());
         holder.exercises.setLayoutManager(layoutManager);
         holder.exercises.setAdapter(historyExerciseAdapter);

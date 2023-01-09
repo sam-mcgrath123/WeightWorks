@@ -1,20 +1,22 @@
 package objects;
 
+import java.util.ArrayList;
+
 public class Exercise {
 
     private String name;
 
     private String type;
 
-    private String set;
+    private ArrayList<Set> sets;
 
     public Exercise() {
     }
 
-    public Exercise(String name, String type, String set) {
+    public Exercise(String name, String type, ArrayList<Set> sets) {
         this.name = name;
         this.type = type;
-        this.set = set;
+        this.sets = sets;
     }
 
     public String getName() {
@@ -33,16 +35,16 @@ public class Exercise {
         this.type = type;
     }
 
-    public String getSet() {
-        return set;
-    }
-
-    public void setSet(String set) {
-        this.set = set;
-    }
-
     //TODO
     public String getBestSet() {
-        return set;
+        return sets.get(0).getPrevious();
+    }
+
+    public ArrayList<Set> getSets() {
+        return sets;
+    }
+
+    public void setSets(ArrayList<Set> sets) {
+        this.sets = sets;
     }
 }

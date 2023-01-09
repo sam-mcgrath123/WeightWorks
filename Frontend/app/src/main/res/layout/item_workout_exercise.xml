@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_small"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/workout_exercise_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_small"
+            android:text="Execise Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/workout_exercise_options_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_horizontal_dots"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/workout_exercise_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:gravity="start"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/workout_exercise_name_text"
+            app:layout_constraintTop_toBottomOf="@id/workout_exercise_name_text">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/workout_exercise_set_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/workout_exercise_previous_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:text="Previous" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/workout_exercise_lbs_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:text="lbs" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/workout_exercise_reps_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:gravity="center"
+                android:text="Reps" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/workout_exercise_checkmark_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@drawable/ic_baseline_checkmark" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/workout_exercise_rv_sets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            app:layout_constraintStart_toStartOf="@+id/workout_exercise_linear_layout"
+            app:layout_constraintTop_toBottomOf="@+id/workout_exercise_linear_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
