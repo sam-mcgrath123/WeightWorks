@@ -19,10 +19,9 @@ import com.google.android.material.tabs.TabLayout;
 public class WorkoutFragment extends Fragment {
 
     Button blankWorkout;
-    Button routineSection;
-    Button exerciseSection;
     Fragment routineFragment;
     Fragment exerciseFragment;
+    Fragment draftFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -41,6 +40,7 @@ public class WorkoutFragment extends Fragment {
         tabLayout.addOnTabSelectedListener(tabSelectedListener);
         routineFragment = new RoutineSectionFragment();
         exerciseFragment = new ExerciseSectionFragment();
+        draftFragment = new WorkoutDraftSectionFragment();
         TabLayout.Tab routineTab = tabLayout.getTabAt(0);
         tabSelectedListener.onTabSelected(routineTab);
     }
@@ -57,10 +57,13 @@ public class WorkoutFragment extends Fragment {
         public void onTabSelected(TabLayout.Tab tab) {
             switch (tab.getPosition()) {
                 case (0):
-                    displaySection(routineFragment, exerciseFragment);
+                    displaySection(routineFragment, new Fragment[]{exerciseFragment, draftFragment});
                     break;
                 case (1):
-                    displaySection(exerciseFragment, routineFragment);
+                    displaySection(exerciseFragment, new Fragment[]{routineFragment, draftFragment});
+                    break;
+                case (2):
+                    displaySection(draftFragment, new Fragment[]{routineFragment, exerciseFragment});
                     break;
             }
         }
@@ -74,14 +77,16 @@ public class WorkoutFragment extends Fragment {
         }
     };
 
-    private void displaySection(Fragment show, Fragment hide) {
+    private void displaySection(Fragment show, Fragment[] fragmentsToHide) {
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         if (show.isAdded())
             fragmentTransaction.show(show);
         else
             fragmentTransaction.add(R.id.workout_fragment_container, show, show.getTag());
-        if (hide.isAdded())
-            fragmentTransaction.hide(hide);
+        for (Fragment hide : fragmentsToHide) {
+            if (hide.isAdded())
+                fragmentTransaction.hide(hide);
+        }
         fragmentTransaction.commit();
     }
 }
