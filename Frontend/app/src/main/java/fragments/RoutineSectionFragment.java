@@ -11,12 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import adapters.RoutinesAdapter;
-import objects.Exercise;
 import objects.Routine;
 
 public class RoutineSectionFragment extends Fragment {
@@ -27,7 +25,7 @@ public class RoutineSectionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
-        return inflater.inflate(R.layout.fragment_routine_layout, parent, false);
+        return inflater.inflate(R.layout.fragment_routine_section, parent, false);
     }
 
     @Override
