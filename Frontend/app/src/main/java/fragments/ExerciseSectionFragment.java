@@ -24,7 +24,7 @@ public class ExerciseSectionFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_exercise_layout, parent, false);
+        return inflater.inflate(R.layout.fragment_exercise_section, parent, false);
     }
 
     @Override

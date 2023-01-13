@@ -15,36 +15,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/workout_linear_layout"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/workout_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="@dimen/spacing_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_empty_workout">
 
-        <Button
-            android:id="@+id/routine_section"
-            style="android:attr/buttonBarButtonStyle"
-            android:layout_width="@dimen/button_width_normal"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/workout_routine_tab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_small"
-            android:text="@string/workout_button"
-            app:layout_constraintEnd_toStartOf="@+id/exercise_section"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/start_empty_workout" />
+            android:text="Routines" />
 
-        <Button
-            android:id="@+id/exercise_section"
-            style="android:attr/buttonBarButtonStyle"
-            android:layout_width="@dimen/button_width_normal"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/workout_exercise_tab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_small"
-            android:text="@string/exercise_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/start_empty_workout" />
-    </LinearLayout>
+            android:text="Exercises" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/workout_draft_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In-Progress" />
+    </com.google.android.material.tabs.TabLayout>
 
     <View
         android:id="@+id/workout_tab_divider"
@@ -53,7 +50,7 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/workout_linear_layout"/>
+        app:layout_constraintTop_toBottomOf="@id/workout_tab_layout" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/workout_fragment_container"
