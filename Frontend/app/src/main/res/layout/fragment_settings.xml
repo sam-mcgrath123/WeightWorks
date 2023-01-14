@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:padding="@dimen/spacing_small"
             android:text="Edit Profile"
-            android:textSize="@dimen/font_large"
+            android:textSize="@dimen/font_larger"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

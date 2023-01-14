@@ -18,7 +18,7 @@
             android:layout_margin="@dimen/spacing_small"
             android:text="Workout Name"
             android:textColor="@color/black"
-            android:textSize="@dimen/font_normal"
+            android:textSize="@dimen/font_large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

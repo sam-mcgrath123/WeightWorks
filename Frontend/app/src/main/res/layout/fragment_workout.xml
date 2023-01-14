@@ -8,21 +8,54 @@
         android:id="@+id/start_empty_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_normal"
         android:width="@dimen/button_width_large"
         android:text="@string/start_workout_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/workout_new_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_tiny"
+        android:background="@drawable/rounded_linear_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_empty_workout"
+        android:clickable="true"
+        android:focusable="true">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/workout_new_routine_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/inline_add_button"
+            android:layout_marginTop="1dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_add"
+            android:text="@string/nav_history" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/workout_new_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Routine"
+            android:textSize="16sp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/workout_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_empty_workout">
+        app:layout_constraintTop_toBottomOf="@+id/workout_new_linear_layout">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/workout_routine_tab"

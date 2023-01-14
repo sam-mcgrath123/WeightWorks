@@ -24,7 +24,7 @@
             android:maxLines="2"
             android:text="Push Day"
             android:textColor="@color/black"
-            android:textSize="@dimen/font_normal"
+            android:textSize="@dimen/font_large"
             app:layout_constraintEnd_toStartOf="@+id/routine_options_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

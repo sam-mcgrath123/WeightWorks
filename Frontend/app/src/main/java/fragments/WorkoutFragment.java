@@ -7,9 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
@@ -18,10 +21,12 @@ import com.google.android.material.tabs.TabLayout;
 
 public class WorkoutFragment extends Fragment {
 
-    Button blankWorkout;
     Fragment routineFragment;
     Fragment exerciseFragment;
     Fragment draftFragment;
+    LinearLayoutCompat linearLayoutCompat;
+    Button blankWorkout;
+    AppCompatTextView newItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -34,6 +39,8 @@ public class WorkoutFragment extends Fragment {
         for (Fragment fragment : getChildFragmentManager().getFragments()) {
             getChildFragmentManager().beginTransaction().remove(fragment).commit();
         }
+        newItem = view.findViewById(R.id.workout_new_item_text);
+        newItem.setText(R.string.new_routine);
         blankWorkout = view.findViewById(R.id.start_empty_workout);
         blankWorkout.setOnClickListener(blankWorkoutListener);
         TabLayout tabLayout = view.findViewById(R.id.workout_tab_layout);
@@ -43,7 +50,16 @@ public class WorkoutFragment extends Fragment {
         draftFragment = new WorkoutDraftSectionFragment();
         TabLayout.Tab routineTab = tabLayout.getTabAt(0);
         tabSelectedListener.onTabSelected(routineTab);
+        linearLayoutCompat = view.findViewById(R.id.workout_new_linear_layout);
+        linearLayoutCompat.setOnClickListener(newItemListener);
     }
+
+    final private View.OnClickListener newItemListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getContext(), "Toast", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     final private View.OnClickListener blankWorkoutListener = new View.OnClickListener() {
         @Override
@@ -58,12 +74,19 @@ public class WorkoutFragment extends Fragment {
             switch (tab.getPosition()) {
                 case (0):
                     displaySection(routineFragment, new Fragment[]{exerciseFragment, draftFragment});
+                    if (linearLayoutCompat != null) {
+                        linearLayoutCompat.setVisibility(View.VISIBLE);
+                    }
+                    newItem.setText(R.string.new_routine);
                     break;
                 case (1):
                     displaySection(exerciseFragment, new Fragment[]{routineFragment, draftFragment});
+                    linearLayoutCompat.setVisibility(View.VISIBLE);
+                    newItem.setText(R.string.new_exercise);
                     break;
                 case (2):
                     displaySection(draftFragment, new Fragment[]{routineFragment, exerciseFragment});
+                    linearLayoutCompat.setVisibility(View.INVISIBLE);
                     break;
             }
         }

@@ -9,12 +9,21 @@
         android:id="@+id/newWorkout_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="@dimen/spacing_small"
-        android:text="Push Day"
+        android:text="New Routine"
         android:textSize="@dimen/font_larger" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/new_workout_rv_exercises"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_short"
+        android:layout_marginHorizontal="@dimen/spacing_normal"
+        android:text="Add Exercises"
+        android:textSize="@dimen/font_normal"
+        android:background="@drawable/default_button" />
 </androidx.appcompat.widget.LinearLayoutCompat>
