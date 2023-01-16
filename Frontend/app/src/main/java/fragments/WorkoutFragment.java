@@ -77,7 +77,7 @@ public class WorkoutFragment extends Fragment {
                     Log.d("Add", "Routine");
                     return true;
                 case R.id.fab_add_exercise:
-                    Log.d("Add", "Exercise");
+                    Navigation.findNavController(getView()).navigate(R.id.action_workout_addExercise);
                     return true;
                 default:
                     return false;
