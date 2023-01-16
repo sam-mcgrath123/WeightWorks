@@ -3,10 +3,15 @@ package fragments;
 import android.example.weightworks.R;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -14,14 +19,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class WorkoutFragment extends Fragment {
 
-    Button blankWorkout;
-    Fragment routineFragment;
-    Fragment exerciseFragment;
-    Fragment draftFragment;
+    private Button blankWorkout;
+    private FloatingActionButton addItem;
+    private Fragment routineFragment;
+    private Fragment exerciseFragment;
+    private Fragment draftFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -43,7 +50,40 @@ public class WorkoutFragment extends Fragment {
         draftFragment = new WorkoutDraftSectionFragment();
         TabLayout.Tab routineTab = tabLayout.getTabAt(0);
         tabSelectedListener.onTabSelected(routineTab);
+        addItem = (FloatingActionButton) view.findViewById(R.id.workout_fab);
+        addItem.setOnClickListener(fabListener);
     }
+
+    final private View.OnClickListener fabListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showFabPopup(v);
+        }
+    };
+
+    private void showFabPopup(View v) {
+        PopupMenu popupMenu = new PopupMenu(getContext(), v);
+        popupMenu.setOnMenuItemClickListener(fabMenuListener);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.workout_fab, popupMenu.getMenu());
+        popupMenu.show();
+    }
+
+    final private PopupMenu.OnMenuItemClickListener fabMenuListener = new PopupMenu.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.fab_add_routine:
+                    Log.d("Add", "Routine");
+                    return true;
+                case R.id.fab_add_exercise:
+                    Log.d("Add", "Exercise");
+                    return true;
+                default:
+                    return false;
+            }
+        }
+    };
 
     final private View.OnClickListener blankWorkoutListener = new View.OnClickListener() {
         @Override
