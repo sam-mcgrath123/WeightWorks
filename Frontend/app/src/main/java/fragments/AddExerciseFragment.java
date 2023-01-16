@@ -7,18 +7,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class AddExerciseFragment extends DialogFragment {
+
+    private String selectedPart;
+    private ArrayList<Integer> partList = new ArrayList<>();
+    private ArrayList<String> partArrayList = new ArrayList<>();
+    private String[] bodyParts = new String[]{"Chest", "Arms", "Legs"};
+    ArrayList<String> selectedBodyParts = new ArrayList<>();
 
     @NonNull
     @Override
@@ -52,7 +57,49 @@ public class AddExerciseFragment extends DialogFragment {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Worked", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                builder.setTitle("Body Part");
+                builder.setCancelable(true);
+                selectedPart = "";
+
+                builder.setSingleChoiceItems(bodyParts, 1, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        selectedPart = bodyParts[which].toString();
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for (int j = 0; j < partList.size(); j++) {
+                            stringBuilder.append(bodyParts[partList.get(j)]);
+                            selectedBodyParts.add(bodyParts[partList.get(j)]);
+                            if (j != partList.size() - 1) {
+                                stringBuilder.append(", ");
+                            }
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+//                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        for (int j = 0; j < selectedParts.length; j++) {
+//                            selectedParts[j] = false;
+//                            partList.clear();
+//                        }
+//                    }
+//                });
+                builder.show();
             }
         });
         builder.setView(view);
