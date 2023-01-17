@@ -1,10 +1,9 @@
-package fragments;
+package fragments.workout;
 
 import android.example.weightworks.R;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;

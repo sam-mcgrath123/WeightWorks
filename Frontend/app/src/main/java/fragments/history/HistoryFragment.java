@@ -1,4 +1,4 @@
-package fragments;
+package fragments.history;
 
 import android.example.weightworks.R;
 import android.os.Bundle;

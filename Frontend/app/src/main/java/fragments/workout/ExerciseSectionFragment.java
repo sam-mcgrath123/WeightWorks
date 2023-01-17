@@ -1,4 +1,4 @@
-package fragments;
+package fragments.workout;
 
 import android.example.weightworks.R;
 import android.os.Bundle;
@@ -13,31 +13,41 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import adapters.HistoryAdapter;
-import adapters.WorkoutExerciseAdapter;
+import adapters.ExercisesAdapter;
 import objects.Exercise;
 import objects.Set;
-import objects.Workout;
 
-public class NewWorkoutFragment extends Fragment {
+public class ExerciseSectionFragment extends Fragment {
 
     ArrayList<Exercise> exercises;
     ArrayList<Set> sets;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_new_workout, parent, false);
+        return inflater.inflate(R.layout.fragment_exercise_section, parent, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        initializeSets();
         initializeExercises();
-        RecyclerView rvExercises = view.findViewById(R.id.new_workout_rv_exercises);
+        RecyclerView rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
 
-        WorkoutExerciseAdapter workoutExerciseAdapter = new WorkoutExerciseAdapter(exercises);
-        rvExercises.setAdapter(workoutExerciseAdapter);
+        ExercisesAdapter exercisesAdapter = new ExercisesAdapter(exercises);
+        rvExercises.setAdapter(exercisesAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    private void initializeExercises() {
+        exercises = new ArrayList<>();
+        initializeSets();
+        Exercise exercise1 = new Exercise("Bench Press", "Chest", sets);
+        initializeSets();
+        Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
+        initializeSets();
+        Exercise exercise3 = new Exercise("Squat", "Legs", sets);
+        exercises.add(exercise1);
+        exercises.add(exercise2);
+        exercises.add(exercise3);
     }
 
     private void initializeSets() {
@@ -48,17 +58,5 @@ public class NewWorkoutFragment extends Fragment {
         sets.add(set1);
         sets.add(set2);
         sets.add(set3);
-    }
-
-    private void initializeExercises() {
-        exercises = new ArrayList<>();
-        Exercise exercise1 = new Exercise("Bench Press", "Chest", sets);
-        initializeSets();
-        Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
-        initializeSets();
-        Exercise exercise3 = new Exercise("Squat", "Legs", sets);
-        exercises.add(exercise1);
-        exercises.add(exercise2);
-        exercises.add(exercise3);
     }
 }

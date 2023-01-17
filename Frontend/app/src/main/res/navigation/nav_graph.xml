@@ -6,7 +6,7 @@
     app:startDestination="@id/workout">
     <fragment
         android:id="@+id/workout"
-        android:name="fragments.WorkoutFragment"
+        android:name="fragments.workout.WorkoutFragment"
         android:label="fragment_workout"
         tools:layout="@layout/fragment_workout">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile"
-        android:name="fragments.UserFragment"
+        android:name="fragments.profile.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/history"
-        android:name="fragments.HistoryFragment"
+        android:name="fragments.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history">
         <action
@@ -55,19 +55,19 @@
     </fragment>
     <dialog
         android:id="@+id/settingsFragment"
-        android:name="fragments.SettingsFragment"
+        android:name="fragments.profile.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
 
     <dialog
         android:id="@+id/addExerciseFragment"
-        android:name="fragments.AddExerciseFragment"
+        android:name="fragments.workout.AddExerciseFragment"
         android:label="AddExerciseFragment"
         tools:layout="@layout/fragment_add_exercise" />
 
     <fragment
         android:id="@+id/newWorkoutFragment"
-        android:name="fragments.NewWorkoutFragment"
+        android:name="fragments.workout.NewWorkoutFragment"
         android:label="fragment_new_workout"
         tools:layout="@layout/fragment_new_workout" />
 </navigation>

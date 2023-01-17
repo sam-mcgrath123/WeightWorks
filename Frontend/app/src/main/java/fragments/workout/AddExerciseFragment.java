@@ -1,4 +1,4 @@
-package fragments;
+package fragments.workout;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
