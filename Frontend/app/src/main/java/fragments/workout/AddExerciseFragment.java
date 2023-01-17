@@ -24,7 +24,9 @@ public class AddExerciseFragment extends DialogFragment {
 
     private String selectedOption;
     private HashMap<Integer, String[]> secondDialogOptions = new HashMap<>();
-    View mainDialog;
+    private View mainDialog;
+    private CardView bodyPartCard;
+    private CardView categoryCard;
 
     @NonNull
     @Override
@@ -34,7 +36,6 @@ public class AddExerciseFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         builder = initializeAlertBuilder(builder, inflater);
-
 
         return builder.create();
     }
@@ -55,22 +56,13 @@ public class AddExerciseFragment extends DialogFragment {
                         Objects.requireNonNull(AddExerciseFragment.this.getDialog()).cancel();
                     }
                 });
+        bodyPartCard = mainDialog.findViewById(R.id.add_exercise_popup_body_part);
+        bodyPartCard.setOnClickListener(bodyPartListener);
 
-        CardView bodyPartCard = mainDialog.findViewById(R.id.add_exercise_popup_body_part);
-        bodyPartCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSecondDialog(bodyPartCard, BODY_PART_OPTIONS_KEY);
-            }
-        });
-        CardView categoryCard = mainDialog.findViewById(R.id.add_exercise_popup_category);
-        categoryCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSecondDialog(categoryCard, CATEGORY_OPTIONS_KEY);
-            }
-        });
+        categoryCard = mainDialog.findViewById(R.id.add_exercise_popup_category);
+        categoryCard.setOnClickListener(categoryListener);
         builder.setView(mainDialog);
+
         return builder;
     }
 
@@ -105,4 +97,18 @@ public class AddExerciseFragment extends DialogFragment {
         });
         builder.show();
     }
+
+    private final View.OnClickListener bodyPartListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showSecondDialog(bodyPartCard, BODY_PART_OPTIONS_KEY);
+        }
+    };
+
+    private final View.OnClickListener categoryListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showSecondDialog(categoryCard, CATEGORY_OPTIONS_KEY);
+        }
+    };
 }
