@@ -20,10 +20,6 @@
             app:destination="@id/newWorkoutFragment"
             app:popUpTo="@+id/workout"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_workout_addExercise"
-            app:destination="@id/addExerciseFragment"
-            app:popUpTo="@+id/workout" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -58,12 +54,6 @@
         android:name="fragments.profile.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
-
-    <dialog
-        android:id="@+id/addExerciseFragment"
-        android:name="fragments.workout.AddExerciseFragment"
-        android:label="AddExerciseFragment"
-        tools:layout="@layout/fragment_add_exercise" />
 
     <fragment
         android:id="@+id/newWorkoutFragment"
