@@ -3,6 +3,8 @@ package com.weightworks.commons.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+
 @Entity
 public class Exercise {
 
@@ -16,6 +18,9 @@ public class Exercise {
 
     @Column(name = "type")
     private String type;
+
+    @OneToMany
+    private ArrayList<Set> setList;
 
     public Exercise() {
     }
@@ -48,5 +53,13 @@ public class Exercise {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ArrayList<Set> getSetList() {
+        return setList;
+    }
+
+    public void setSetList(ArrayList<Set> setList) {
+        this.setList = setList;
     }
 }
