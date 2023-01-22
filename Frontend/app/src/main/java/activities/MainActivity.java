@@ -3,7 +3,6 @@ package activities;
 import android.example.weightworks.R;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +16,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import Remote.ApiService;
-import Remote.Network;
-import objects.Exercise;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,29 +35,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_bar);
         NavigationUI.setupWithNavController(bottomNavigationView, navHostController);
         navHostController.addOnDestinationChangedListener(navControllerListener);
-
-        postExercise("Squat", "Barbell");
-    }
-
-    private void postExercise(String name, String type) {
-        apiService = Network.getInstance().create(ApiService.class);
-
-        Exercise exercise = new Exercise(name, type);
-        Call<Exercise> call1 = apiService.addExercise(exercise);
-        call1.enqueue(new Callback<Exercise>() {
-            @Override
-            public void onResponse(Call<Exercise> call, Response<Exercise> response) {
-                Exercise exercise1 = response.body();
-
-                Toast.makeText(getApplicationContext(), exercise1.getName() + " " + exercise1.getId() + " " + exercise1.getType(), Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onFailure(Call<Exercise> call, Throwable t) {
-                call.cancel();
-            }
-        });
     }
 
     final private NavController.OnDestinationChangedListener navControllerListener = new NavController.OnDestinationChangedListener() {
