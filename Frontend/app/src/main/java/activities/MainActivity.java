@@ -15,12 +15,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import Remote.ApiService;
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView title;
-    ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
