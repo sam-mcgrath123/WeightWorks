@@ -2,7 +2,10 @@ package com.weightworks.commons.dao;
 
 import com.weightworks.commons.entity.Exercise;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ExerciseDao extends CrudRepository<Exercise, Long> {
-    Exercise findById(int id);
+import java.util.Optional;
+
+@Repository
+public interface ExerciseDao extends CrudRepository<Exercise, Integer> {
 }

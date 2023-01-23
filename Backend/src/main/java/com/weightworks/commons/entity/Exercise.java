@@ -3,14 +3,15 @@ package com.weightworks.commons.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 @Entity
+@Table(name = "exercises")
 public class Exercise {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")
@@ -19,17 +20,9 @@ public class Exercise {
     @Column(name = "type")
     private String type;
 
-    @OneToMany
-    private ArrayList<Set> setList;
-
-    public Exercise() {
-    }
-
-    public Exercise(int id, String name, String type) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-    }
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "exercise")
+    private java.util.Set<Set> sets = new HashSet<>();
 
     public int getId() {
         return id;
@@ -55,11 +48,15 @@ public class Exercise {
         this.type = type;
     }
 
-    public ArrayList<Set> getSetList() {
-        return setList;
+    public java.util.Set<Set> getSets() {
+        return sets;
     }
 
-    public void setSetList(ArrayList<Set> setList) {
-        this.setList = setList;
+    public void setSets(java.util.Set<Set> sets) {
+        this.sets = sets;
+
+        for(Set s : sets) {
+            s.setExercise(this);
+        }
     }
 }
