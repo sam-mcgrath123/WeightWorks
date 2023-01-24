@@ -1,5 +1,7 @@
 package Remote;
 
+import java.util.ArrayList;
+
 import objects.Exercise;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -8,9 +10,11 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @GET("/getExercise")
-    Call<Exercise> getExercise(@Body Exercise exercise);
+    String BASE_URL = "/weightworks/";
 
-    @POST("/addExercise")
+    @GET(BASE_URL + "exercises")
+    Call<ArrayList<Exercise>> getExercises();
+
+    @POST(BASE_URL + "exercises")
     Call<Exercise> addExercise(@Body Exercise exercise);
 }

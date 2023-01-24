@@ -1,26 +1,37 @@
 package fragments.workout;
 
 import android.example.weightworks.R;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import Remote.ApiService;
+import Remote.Network;
 import adapters.ExercisesAdapter;
 import objects.Exercise;
 import objects.Set;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ExerciseSectionFragment extends Fragment {
 
+    ApiService apiService;
     ArrayList<Exercise> exercises;
     ArrayList<Set> sets;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -29,7 +40,11 @@ public class ExerciseSectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        initializeExercises();
+        this.view = view;
+        getAllExercises();
+    }
+
+    private void initializeRecyclerView(@NonNull View view) {
         RecyclerView rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
 
         ExercisesAdapter exercisesAdapter = new ExercisesAdapter(exercises);
@@ -37,26 +52,24 @@ public class ExerciseSectionFragment extends Fragment {
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void initializeExercises() {
+    private void getAllExercises() {
         exercises = new ArrayList<>();
-        initializeSets();
-        Exercise exercise1 = new Exercise("Bench Press", "Chest", sets);
-        initializeSets();
-        Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
-        initializeSets();
-        Exercise exercise3 = new Exercise("Squat", "Legs", sets);
-        exercises.add(exercise1);
-        exercises.add(exercise2);
-        exercises.add(exercise3);
-    }
 
-    private void initializeSets() {
-        sets = new ArrayList<>();
-        Set set1 = new Set(1, "90 lb x 12");
-        Set set2 = new Set(2, "90 lb x 12");
-        Set set3 = new Set(3, "90 lb x 12");
-        sets.add(set1);
-        sets.add(set2);
-        sets.add(set3);
+        apiService = Network.getInstance().create(ApiService.class);
+
+        Call<ArrayList<Exercise>> call1 = apiService.getExercises();
+        call1.enqueue(new Callback<ArrayList<Exercise>>() {
+            @Override
+            public void onResponse(@NonNull Call<ArrayList<Exercise>> call, @NonNull Response<ArrayList<Exercise>> response) {
+                assert response.body() != null;
+                exercises.addAll(response.body());
+                initializeRecyclerView(view);
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ArrayList<Exercise>> call, @NonNull Throwable t) {
+                call.cancel();
+            }
+        });
     }
 }

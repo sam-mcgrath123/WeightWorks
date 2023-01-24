@@ -57,7 +57,7 @@ public class Exercise {
 
     //TODO
     public String getBestSet() {
-        return sets.get(0).getPrevious();
+        return sets.get(0).toString();
     }
 
     public ArrayList<Set> getSets() {

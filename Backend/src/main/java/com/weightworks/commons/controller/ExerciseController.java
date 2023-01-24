@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.awt.print.Pageable;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -41,5 +43,12 @@ public class ExerciseController {
             return ResponseEntity.unprocessableEntity().build();
         }
         return ResponseEntity.ok(optionalExercise.get().getSets());
+    }
+
+    @GetMapping
+    public ResponseEntity<ArrayList<Exercise>> getAll() {
+        ArrayList<Exercise> allExercises = new ArrayList<>();
+        exerciseDao.findAll().forEach(allExercises::add);
+        return ResponseEntity.ok(allExercises);
     }
 }
