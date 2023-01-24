@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ public class AddExerciseFragment extends DialogFragment {
     private final int BODY_PART_OPTIONS_KEY = 0;
     private final int CATEGORY_OPTIONS_KEY = 1;
 
+    private String exerciseName;
+    private String exerciseType;
     private String selectedOption;
     private HashMap<Integer, String[]> secondDialogOptions = new HashMap<>();
     private View mainDialog;
@@ -31,6 +34,8 @@ public class AddExerciseFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        exerciseName = "";
+        exerciseType = "";
         secondDialogOptions.put(BODY_PART_OPTIONS_KEY, new String[]{"Chest", "Arms", "Legs"});
         secondDialogOptions.put(CATEGORY_OPTIONS_KEY, new String[]{"Barbell", "Dumbbell", "Machine/Other"});
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
@@ -46,8 +51,12 @@ public class AddExerciseFragment extends DialogFragment {
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        EditText name = mainDialog.findViewById(R.id.add_exercise_name_text);
+                        exerciseName = name.getText().toString();
                         Bundle result = new Bundle();
                         result.putString("ExerciseAdded", "resultWorked");
+                        result.putString("ExerciseName", exerciseName);
+                        result.putString("ExerciseType", exerciseType);
                         getParentFragmentManager().setFragmentResult("ExerciseAdded", result);
                     }
                 })
@@ -86,6 +95,7 @@ public class AddExerciseFragment extends DialogFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 TextView value = secondaryDialogView.findViewById(R.id.add_exercise_input);
                 value.setText(selectedOption);
+                exerciseType = optionsKey == BODY_PART_OPTIONS_KEY ? selectedOption : exerciseType;
             }
         });
 

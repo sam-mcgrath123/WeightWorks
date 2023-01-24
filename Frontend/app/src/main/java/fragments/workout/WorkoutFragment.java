@@ -15,7 +15,6 @@ import android.widget.PopupMenu;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
@@ -52,14 +51,6 @@ public class WorkoutFragment extends Fragment {
         tabSelectedListener.onTabSelected(routineTab);
         addItem = (FloatingActionButton) view.findViewById(R.id.workout_fab);
         addItem.setOnClickListener(fabListener);
-
-        getChildFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                // TODO This is where update Exercise Data when that is decided on how
-//                Log.d(requestKey, result.getString(requestKey));
-            }
-        });
     }
 
     final private View.OnClickListener fabListener = new View.OnClickListener() {

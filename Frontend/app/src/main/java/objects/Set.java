@@ -67,4 +67,9 @@ public class Set {
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
+
+    @Override
+    public String toString() {
+        return weight + "lb x " + reps;
+    }
 }

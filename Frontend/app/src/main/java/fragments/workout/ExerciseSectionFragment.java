@@ -8,19 +8,25 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import Remote.ApiService;
+import Remote.Network;
 import adapters.ExercisesAdapter;
 import objects.Exercise;
-import objects.Set;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ExerciseSectionFragment extends Fragment {
 
+    ApiService apiService;
     ArrayList<Exercise> exercises;
-    ArrayList<Set> sets;
+    RecyclerView rvExercises;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -29,34 +35,58 @@ public class ExerciseSectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        initializeExercises();
-        RecyclerView rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
+        rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
+        getAllExercises();
+        getParentFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                postNewExercise(result);
+            }
+        });
+    }
 
+    private void postNewExercise(@NonNull Bundle result) {
+        apiService = Network.getInstance().create(ApiService.class);
+
+        Exercise exercise = new Exercise(result.getString("ExerciseName"), result.getString("ExerciseType"));
+        Call<Exercise> call1 = apiService.addExercise(exercise);
+        call1.enqueue(new Callback<Exercise>() {
+            @Override
+            public void onResponse(Call<Exercise> call, Response<Exercise> response) {
+                getAllExercises();
+            }
+
+            @Override
+            public void onFailure(Call<Exercise> call, Throwable t) {
+                call.cancel();
+            }
+        });
+    }
+
+    private void initializeRecyclerView() {
         ExercisesAdapter exercisesAdapter = new ExercisesAdapter(exercises);
         rvExercises.setAdapter(exercisesAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void initializeExercises() {
+    private void getAllExercises() {
         exercises = new ArrayList<>();
-        initializeSets();
-        Exercise exercise1 = new Exercise("Bench Press", "Chest", sets);
-        initializeSets();
-        Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
-        initializeSets();
-        Exercise exercise3 = new Exercise("Squat", "Legs", sets);
-        exercises.add(exercise1);
-        exercises.add(exercise2);
-        exercises.add(exercise3);
-    }
 
-    private void initializeSets() {
-        sets = new ArrayList<>();
-        Set set1 = new Set(1, "90 lb x 12");
-        Set set2 = new Set(2, "90 lb x 12");
-        Set set3 = new Set(3, "90 lb x 12");
-        sets.add(set1);
-        sets.add(set2);
-        sets.add(set3);
+        apiService = Network.getInstance().create(ApiService.class);
+
+        Call<ArrayList<Exercise>> call1 = apiService.getExercises();
+        call1.enqueue(new Callback<ArrayList<Exercise>>() {
+            @Override
+            public void onResponse(@NonNull Call<ArrayList<Exercise>> call, @NonNull Response<ArrayList<Exercise>> response) {
+                assert response.body() != null;
+                exercises.addAll(response.body());
+                initializeRecyclerView();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ArrayList<Exercise>> call, @NonNull Throwable t) {
+                call.cancel();
+            }
+        });
     }
 }
