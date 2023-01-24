@@ -15,7 +15,7 @@ import java.util.Optional;
 import static com.weightworks.commons.values.UrlString.BASE_URL;
 
 @RestController
-@RequestMapping(BASE_URL + "sets")
+@RequestMapping(BASE_URL + "/sets")
 public class SetController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class SetController {
     @Autowired
     SetDao setDao;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Set> getById(@PathVariable Integer id) {
         Optional<Set> optionalSet = setDao.findById(id);
         return optionalSet.map(ResponseEntity::ok).orElseGet(() ->
