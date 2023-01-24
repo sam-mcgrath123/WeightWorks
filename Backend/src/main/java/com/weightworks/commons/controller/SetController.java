@@ -12,8 +12,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Optional;
 
+import static com.weightworks.commons.values.UrlString.BASE_URL;
+
 @RestController
-@RequestMapping("weightworks/sets")
+@RequestMapping(BASE_URL + "sets")
 public class SetController {
 
     @Autowired

@@ -13,8 +13,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static com.weightworks.commons.values.UrlString.BASE_URL;
+
 @RestController
-@RequestMapping("weightworks/exercises")
+@RequestMapping(BASE_URL + "/exercises")
 public class ExerciseController {
 
     @Autowired
