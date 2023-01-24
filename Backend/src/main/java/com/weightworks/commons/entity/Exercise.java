@@ -55,7 +55,7 @@ public class Exercise {
     public void setSets(java.util.Set<Set> sets) {
         this.sets = sets;
 
-        for(Set s : sets) {
+        for (Set s : sets) {
             s.setExercise(this);
         }
     }

@@ -2,7 +2,6 @@ package com.weightworks.commons.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
 
 @Entity
 @Table(name = "\"Sets\"")
