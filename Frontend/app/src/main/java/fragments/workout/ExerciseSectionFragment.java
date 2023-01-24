@@ -33,6 +33,7 @@ public class ExerciseSectionFragment extends Fragment {
     ArrayList<Exercise> exercises;
     ArrayList<Set> sets;
     View view;
+    ExercisesAdapter exercisesAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -47,7 +48,6 @@ public class ExerciseSectionFragment extends Fragment {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 postNewExercise(result);
-                getAllExercises();
             }
         });
     }
@@ -60,6 +60,7 @@ public class ExerciseSectionFragment extends Fragment {
         call1.enqueue(new Callback<Exercise>() {
             @Override
             public void onResponse(Call<Exercise> call, Response<Exercise> response) {
+                exercisesAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -72,9 +73,10 @@ public class ExerciseSectionFragment extends Fragment {
     private void initializeRecyclerView(@NonNull View view) {
         RecyclerView rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
 
-        ExercisesAdapter exercisesAdapter = new ExercisesAdapter(exercises);
+        exercisesAdapter = new ExercisesAdapter(exercises);
         rvExercises.setAdapter(exercisesAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
+        Log.d("Count", exercises.size() + "");
     }
 
     private void getAllExercises() {
