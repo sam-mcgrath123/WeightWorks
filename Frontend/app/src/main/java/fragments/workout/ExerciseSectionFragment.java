@@ -28,7 +28,7 @@ public class ExerciseSectionFragment extends Fragment {
     ApiService apiService;
     ArrayList<Exercise> exercises;
     ArrayList<Set> sets;
-    View view;
+    RecyclerView rvExercises;
     ExercisesAdapter exercisesAdapter;
 
     @Override
@@ -38,7 +38,7 @@ public class ExerciseSectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        this.view = view;
+        rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
         getAllExercises();
         getParentFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
             @Override
@@ -66,9 +66,7 @@ public class ExerciseSectionFragment extends Fragment {
         });
     }
 
-    private void initializeRecyclerView(@NonNull View view) {
-        RecyclerView rvExercises = (RecyclerView) view.findViewById(R.id.rvExercises);
-
+    private void initializeRecyclerView() {
         exercisesAdapter = new ExercisesAdapter(exercises);
         rvExercises.setAdapter(exercisesAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -85,7 +83,7 @@ public class ExerciseSectionFragment extends Fragment {
             public void onResponse(@NonNull Call<ArrayList<Exercise>> call, @NonNull Response<ArrayList<Exercise>> response) {
                 assert response.body() != null;
                 exercises.addAll(response.body());
-                initializeRecyclerView(view);
+                initializeRecyclerView();
             }
 
             @Override
