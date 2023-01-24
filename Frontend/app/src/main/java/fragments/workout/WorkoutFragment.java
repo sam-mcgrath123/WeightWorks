@@ -15,19 +15,11 @@ import android.widget.PopupMenu;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-
-import Remote.ApiService;
-import Remote.Network;
-import objects.Exercise;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class WorkoutFragment extends Fragment {
 
@@ -36,7 +28,6 @@ public class WorkoutFragment extends Fragment {
     private Fragment routineFragment;
     private Fragment exerciseFragment;
     private Fragment draftFragment;
-    ApiService apiService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -60,30 +51,6 @@ public class WorkoutFragment extends Fragment {
         tabSelectedListener.onTabSelected(routineTab);
         addItem = (FloatingActionButton) view.findViewById(R.id.workout_fab);
         addItem.setOnClickListener(fabListener);
-
-        getChildFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                postNewExercise(result);
-            }
-        });
-    }
-
-    private void postNewExercise(@NonNull Bundle result) {
-        apiService = Network.getInstance().create(ApiService.class);
-
-        Exercise exercise = new Exercise(result.getString("ExerciseName"), result.getString("ExerciseType"));
-        Call<Exercise> call1 = apiService.addExercise(exercise);
-        call1.enqueue(new Callback<Exercise>() {
-            @Override
-            public void onResponse(Call<Exercise> call, Response<Exercise> response) {
-            }
-
-            @Override
-            public void onFailure(Call<Exercise> call, Throwable t) {
-                call.cancel();
-            }
-        });
     }
 
     final private View.OnClickListener fabListener = new View.OnClickListener() {
