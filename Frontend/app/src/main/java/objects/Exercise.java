@@ -55,9 +55,17 @@ public class Exercise {
         this.type = type;
     }
 
-    //TODO
     public String getBestSet() {
-        return sets.get(0).toString();
+        if(sets == null) {
+            return "";
+        }
+        Set bestSet = sets.get(0);
+        for(Set set : sets) {
+            if(set.getWeight() > bestSet.getWeight()) {
+                bestSet = set;
+            }
+        }
+        return bestSet.toString();
     }
 
     public ArrayList<Set> getSets() {
