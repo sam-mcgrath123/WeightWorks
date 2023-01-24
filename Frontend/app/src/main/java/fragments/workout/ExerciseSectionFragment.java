@@ -1,21 +1,17 @@
 package fragments.workout;
 
 import android.example.weightworks.R;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import Remote.ApiService;
@@ -60,7 +56,7 @@ public class ExerciseSectionFragment extends Fragment {
         call1.enqueue(new Callback<Exercise>() {
             @Override
             public void onResponse(Call<Exercise> call, Response<Exercise> response) {
-                exercisesAdapter.notifyDataSetChanged();
+                getAllExercises();
             }
 
             @Override
@@ -76,7 +72,6 @@ public class ExerciseSectionFragment extends Fragment {
         exercisesAdapter = new ExercisesAdapter(exercises);
         rvExercises.setAdapter(exercisesAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
-        Log.d("Count", exercises.size() + "");
     }
 
     private void getAllExercises() {
