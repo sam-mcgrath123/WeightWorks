@@ -18,7 +18,6 @@ import Remote.ApiService;
 import Remote.Network;
 import adapters.ExercisesAdapter;
 import objects.Exercise;
-import objects.Set;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,9 +26,7 @@ public class ExerciseSectionFragment extends Fragment {
 
     ApiService apiService;
     ArrayList<Exercise> exercises;
-    ArrayList<Set> sets;
     RecyclerView rvExercises;
-    ExercisesAdapter exercisesAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -67,7 +64,7 @@ public class ExerciseSectionFragment extends Fragment {
     }
 
     private void initializeRecyclerView() {
-        exercisesAdapter = new ExercisesAdapter(exercises);
+        ExercisesAdapter exercisesAdapter = new ExercisesAdapter(exercises);
         rvExercises.setAdapter(exercisesAdapter);
         rvExercises.setLayoutManager(new LinearLayoutManager(getContext()));
     }
