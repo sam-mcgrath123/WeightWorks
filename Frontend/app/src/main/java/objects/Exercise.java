@@ -56,7 +56,7 @@ public class Exercise {
     }
 
     public String getBestSet() {
-        if(sets == null) {
+        if(sets.isEmpty()) {
             return "";
         }
         Set bestSet = sets.get(0);

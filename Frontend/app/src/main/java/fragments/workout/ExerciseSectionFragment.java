@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +43,30 @@ public class ExerciseSectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         this.view = view;
         getAllExercises();
+        getParentFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                postNewExercise(result);
+                getAllExercises();
+            }
+        });
+    }
+
+    private void postNewExercise(@NonNull Bundle result) {
+        apiService = Network.getInstance().create(ApiService.class);
+
+        Exercise exercise = new Exercise(result.getString("ExerciseName"), result.getString("ExerciseType"));
+        Call<Exercise> call1 = apiService.addExercise(exercise);
+        call1.enqueue(new Callback<Exercise>() {
+            @Override
+            public void onResponse(Call<Exercise> call, Response<Exercise> response) {
+            }
+
+            @Override
+            public void onFailure(Call<Exercise> call, Throwable t) {
+                call.cancel();
+            }
+        });
     }
 
     private void initializeRecyclerView(@NonNull View view) {

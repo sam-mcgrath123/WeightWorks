@@ -61,30 +61,15 @@ public class WorkoutFragment extends Fragment {
         addItem = (FloatingActionButton) view.findViewById(R.id.workout_fab);
         addItem.setOnClickListener(fabListener);
 
-        getChildFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                postNewExercise(result);
-            }
-        });
+//        getChildFragmentManager().setFragmentResultListener("ExerciseAdded", this, new FragmentResultListener() {
+//            @Override
+//            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+//                postNewExercise(result);
+//            }
+//        });
     }
 
-    private void postNewExercise(@NonNull Bundle result) {
-        apiService = Network.getInstance().create(ApiService.class);
 
-        Exercise exercise = new Exercise(result.getString("ExerciseName"), result.getString("ExerciseType"));
-        Call<Exercise> call1 = apiService.addExercise(exercise);
-        call1.enqueue(new Callback<Exercise>() {
-            @Override
-            public void onResponse(Call<Exercise> call, Response<Exercise> response) {
-            }
-
-            @Override
-            public void onFailure(Call<Exercise> call, Throwable t) {
-                call.cancel();
-            }
-        });
-    }
 
     final private View.OnClickListener fabListener = new View.OnClickListener() {
         @Override
