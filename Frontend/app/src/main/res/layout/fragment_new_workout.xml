@@ -14,7 +14,6 @@
         android:text="Push Day"
         android:textSize="@dimen/font_large" />
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/new_workout_rv_exercises"
         android:layout_width="match_parent"
