@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,8 +61,14 @@ public class NewWorkoutFragment extends Fragment {
         Exercise exercise2 = new Exercise("Deadlift", "Back", sets);
         initializeSets();
         Exercise exercise3 = new Exercise("Squat", "Legs", sets);
+        initializeSets();
+        Exercise exercise4 = new Exercise("Squat", "Legs", sets);
+        initializeSets();
+        Exercise exercise5 = new Exercise("Squat", "Legs", sets);
         exercises.add(exercise1);
         exercises.add(exercise2);
         exercises.add(exercise3);
+        exercises.add(exercise4);
+        exercises.add(exercise5);
     }
 }
