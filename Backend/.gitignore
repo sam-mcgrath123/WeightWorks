@@ -34,3 +34,4 @@ build/
 
 ### environment properties
 src/main/resources/env.properties
+out/production/resources/env.properties
