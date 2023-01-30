@@ -23,6 +23,7 @@
     <dimen name="button_width_large">200dp</dimen>
     <dimen name="button_width_normal">125dp</dimen>
     <dimen name="divider_height_short">2dp</dimen>
+    <dimen name="divider_height_medium">4dp</dimen>
     <dimen name="max_width_normal">100dp</dimen>
     <dimen name="max_width_large">125dp</dimen>
     <dimen name="routine_size">175dp</dimen>

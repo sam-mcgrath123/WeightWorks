@@ -17,8 +17,7 @@ import com.google.android.material.tabs.TabLayout;
 public class UserFragment extends Fragment {
 
     ImageView userSettings;
-    Fragment metricFragment;
-    Fragment nutritionFragment;
+    Fragment goalFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -33,46 +32,9 @@ public class UserFragment extends Fragment {
         }
         userSettings = view.findViewById(R.id.user_settings_icon);
         userSettings.setOnClickListener(userSettingsListener);
-        TabLayout tabLayout = view.findViewById(R.id.user_tab_layout);
-        tabLayout.addOnTabSelectedListener(tabSelectedListener);
-        metricFragment = new MetricSectionFragment();
-        nutritionFragment = new NutritionSectionFragment();
-        TabLayout.Tab metricTab = tabLayout.getTabAt(0);
-        tabSelectedListener.onTabSelected(metricTab);
-    }
-
-
-    private TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
-        @Override
-        public void onTabSelected(TabLayout.Tab tab) {
-            switch (tab.getPosition()) {
-                case (0):
-                    displaySection(metricFragment, nutritionFragment);
-                    break;
-                case (1):
-                    displaySection(nutritionFragment, metricFragment);
-                    break;
-            }
-        }
-
-        @Override
-        public void onTabUnselected(TabLayout.Tab tab) {
-        }
-
-        @Override
-        public void onTabReselected(TabLayout.Tab tab) {
-        }
-    };
-
-    private void displaySection(Fragment show, Fragment hide) {
-        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-        if (show.isAdded())
-            fragmentTransaction.show(show);
-        else
-            fragmentTransaction.add(R.id.user_fragment_container, show, show.getTag());
-        if (hide.isAdded())
-            fragmentTransaction.hide(hide);
-        fragmentTransaction.commit();
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.user_fragment_container, new MetricSectionFragment())
+                .commit();
     }
 
     private View.OnClickListener userSettingsListener = new View.OnClickListener() {

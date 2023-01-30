@@ -1,5 +1,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -47,33 +48,12 @@
     <View
         android:id="@+id/user_tab_divider"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_height_short"
+        android:layout_height="@dimen/divider_height_medium"
         android:layout_marginTop="@dimen/spacing_large"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_num_workouts_text" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/user_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_tab_divider">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/user_metric_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Metrics" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/user_nutrition_tab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nutrition" />
-    </com.google.android.material.tabs.TabLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/user_fragment_container"
@@ -81,5 +61,5 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_tab_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/user_tab_divider" />
 </androidx.constraintlayout.widget.ConstraintLayout>
