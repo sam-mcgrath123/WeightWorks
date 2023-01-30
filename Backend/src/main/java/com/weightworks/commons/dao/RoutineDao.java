@@ -1,9 +1,9 @@
 package com.weightworks.commons.dao;
 
-import com.weightworks.commons.entity.Set;
+import com.weightworks.commons.entity.Routine;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SetDao extends CrudRepository<Set, Integer> {
+public interface RoutineDao extends CrudRepository<Routine, Integer> {
 }

@@ -1,6 +1,7 @@
 package com.weightworks.commons.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -19,6 +20,11 @@ public class Exercise {
 
     @Column(name = "type")
     private String type;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "routine_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Routine routine;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "exercise")
@@ -46,6 +52,14 @@ public class Exercise {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Routine getRoutine() {
+        return routine;
+    }
+
+    public void setRoutine(Routine routine) {
+        this.routine = routine;
     }
 
     public java.util.Set<Set> getSets() {
