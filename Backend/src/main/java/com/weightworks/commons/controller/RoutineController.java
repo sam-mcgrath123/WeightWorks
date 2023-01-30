@@ -1,6 +1,5 @@
 package com.weightworks.commons.controller;
 
-import com.weightworks.commons.dao.ExerciseDao;
 import com.weightworks.commons.dao.RoutineDao;
 import com.weightworks.commons.entity.Routine;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,6 @@ public class RoutineController {
 
     @Autowired
     RoutineDao routineDao;
-
-    @Autowired
-    ExerciseDao exerciseDao;
 
     @PostMapping
     public ResponseEntity<Routine> create(@RequestBody Routine routine) {

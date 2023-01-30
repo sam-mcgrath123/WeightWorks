@@ -69,9 +69,4 @@ public class Routine {
     public void setExercises(Set<Exercise> exercises) {
         this.exercises = exercises;
     }
-
-    public void addExercise(Exercise exercise) {
-        exercises.add(exercise);
-        exercise.setRoutine(this);
-    }
 }
