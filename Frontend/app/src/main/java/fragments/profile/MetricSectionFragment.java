@@ -26,22 +26,9 @@ public class MetricSectionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         progressBar = view.findViewById(R.id.metric_progress_bar);
         progressBar.setProgress(currentProgress);
+        progressBar.setMax(200);
+        currentProgress = 180;
+        progressBar.setProgress(currentProgress);
 
-        CountDownTimer countDownTimer = new CountDownTimer(10000, 100) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                currentProgress = currentProgress + 10;
-                progressBar.setProgress(currentProgress);
-                progressBar.setMax(100);
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-
-        };
-
-        countDownTimer.start();
     }
 }
