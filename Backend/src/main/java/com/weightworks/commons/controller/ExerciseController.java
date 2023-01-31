@@ -4,6 +4,7 @@ import com.weightworks.commons.dao.ExerciseDao;
 import com.weightworks.commons.entity.Exercise;
 import com.weightworks.commons.entity.Routine;
 import com.weightworks.commons.entity.Set;
+import com.weightworks.commons.entity.Workout;
 import com.weightworks.commons.service.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,14 +37,25 @@ public class ExerciseController {
     }
 
     @PutMapping("/routines/{routine_id}")
-    public ResponseEntity<Routine> update(@PathVariable Integer routine_id, @RequestBody List<Integer> exercises) {
-        Routine routine = exerciseService.updateExercise(routine_id, exercises);
+    public ResponseEntity<Routine> updateRoutines(@PathVariable Integer routine_id, @RequestBody List<Integer> exercises) {
+        Routine routine = exerciseService.updateExerciseRoutines(routine_id, exercises);
         if (routine == null) {
             return ResponseEntity.unprocessableEntity().build();
         }
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(routine.getId()).toUri();
         return ResponseEntity.created(location).body(routine);
+    }
+
+    @PutMapping("/workouts/{workout_id}")
+    public ResponseEntity<Workout> updateWorkouts(@PathVariable Integer workout_id, @RequestBody List<Integer> exercises) {
+        Workout workout = exerciseService.updateExerciseWorkouts(workout_id, exercises);
+        if (workout == null) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(workout.getId()).toUri();
+        return ResponseEntity.created(location).body(workout);
     }
 
     @GetMapping("/{id}")

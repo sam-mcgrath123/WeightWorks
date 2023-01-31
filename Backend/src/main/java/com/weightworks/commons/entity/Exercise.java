@@ -26,6 +26,11 @@ public class Exercise {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Routine routine;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workout_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Workout workout;
+
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "exercise")
     private java.util.Set<Set> sets = new HashSet<>();
@@ -60,6 +65,14 @@ public class Exercise {
 
     public void setRoutine(Routine routine) {
         this.routine = routine;
+    }
+
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
     }
 
     public java.util.Set<Set> getSets() {
