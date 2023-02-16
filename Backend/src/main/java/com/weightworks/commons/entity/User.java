@@ -2,6 +2,9 @@ package com.weightworks.commons.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class User {
 
@@ -24,6 +27,12 @@ public class User {
 
     @Column(name = "number_of_workouts")
     private int numberOfWorkouts;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Routine> routines = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Workout> workouts = new HashSet<>();
 
     public int getId() {
         return id;
@@ -71,5 +80,21 @@ public class User {
 
     public void setNumberOfWorkouts(int numberOfWorkouts) {
         this.numberOfWorkouts = numberOfWorkouts;
+    }
+
+    public Set<Routine> getRoutines() {
+        return routines;
+    }
+
+    public void setRoutines(Set<Routine> routines) {
+        this.routines = routines;
+    }
+
+    public Set<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(Set<Workout> workouts) {
+        this.workouts = workouts;
     }
 }

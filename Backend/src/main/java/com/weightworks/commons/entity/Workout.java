@@ -31,12 +31,17 @@ public class Workout {
     @Column(name = "number_of_prs")
     private int numberOfPrs;
 
-    @Column(name="isFinished")
+    @Column(name = "isFinished")
     private boolean isFinished;
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "workout")
     private java.util.Set<Exercise> exercises = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "user_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
 
     public int getId() {
         return id;

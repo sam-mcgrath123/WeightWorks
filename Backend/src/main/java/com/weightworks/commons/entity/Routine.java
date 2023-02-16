@@ -29,6 +29,11 @@ public class Routine {
             mappedBy = "routine")
     private java.util.Set<Exercise> exercises = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "user_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
+
     public int getId() {
         return id;
     }
