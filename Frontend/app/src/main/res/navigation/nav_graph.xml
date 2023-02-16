@@ -20,6 +20,9 @@
             app:destination="@id/newWorkoutFragment"
             app:popUpTo="@+id/workout"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_workout_addRoutine"
+            app:destination="@id/addRoutineFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -60,4 +63,9 @@
         android:name="fragments.workout.NewWorkoutFragment"
         android:label="fragment_new_workout"
         tools:layout="@layout/fragment_new_workout" />
+    <fragment
+        android:id="@+id/addRoutineFragment"
+        android:name="fragments.workout.AddRoutineFragment"
+        android:label="AddRoutineFragment"
+        tools:layout="@layout/fragment_add_routine"/>
 </navigation>

@@ -69,7 +69,7 @@ public class WorkoutExerciseAdapter extends RecyclerView.Adapter<WorkoutExercise
     @Override
     public int getItemViewType(int position) {
         int viewType = 1;
-        if (position == exercises.size())
+        if (exercises != null && position == exercises.size())
             viewType = 0;
         return viewType;
     }
@@ -108,6 +108,9 @@ public class WorkoutExerciseAdapter extends RecyclerView.Adapter<WorkoutExercise
 
     @Override
     public int getItemCount() {
+        if(exercises == null) {
+            return 0;
+        }
         return exercises.size()+1;
     }
 }

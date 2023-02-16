@@ -21,6 +21,8 @@ import androidx.navigation.Navigation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 public class WorkoutFragment extends Fragment {
 
     private Button blankWorkout;
@@ -73,7 +75,7 @@ public class WorkoutFragment extends Fragment {
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.fab_add_routine:
-                    Log.d("Add", "Routine");
+                    Navigation.findNavController(requireView()).navigate(R.id.action_workout_addRoutine);
                     return true;
                 case R.id.fab_add_exercise:
                     new AddExerciseFragment().show(getChildFragmentManager(), null);

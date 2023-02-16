@@ -7,7 +7,8 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/spacing_tiny">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/add_routine_constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -19,22 +20,20 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_small"
             android:background="@drawable/rounded_edit_text"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:hint="Routine Name"
-            android:padding="@dimen/spacing_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="@dimen/spacing_small" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/new_routine_rv_exercises"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="@dimen/spacing_large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_exercise_name_text" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>
